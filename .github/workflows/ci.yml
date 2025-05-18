@@ -1,0 +1,17 @@
+name: Artemis CodexOps CI
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate project structure
+        run: |
+          ls -l
+          test -f README.md
+          test -d cli
+          test -d agents
+          test -d vr
+          test -d web
+      - name: Echo CI Ready
+        run: echo "Artemis CodexOps CI Pipeline Executed"
