@@ -1,0 +1,64 @@
+37b08d7 SCUS: Auto-decide — repaired magic_loop_full.sh, validated health, pushed clean state.
+a653d18 SCUS: Proceed with multilingual/AI, cloud user profile, investor prospectus, and interactive dashboard automation. All systems audit-ready and globally scalable.
+fa212d9 SCUS: One-stop multilingual/AI, user profile cloud, GitHub Pages with dynamic investor/market support, and full doc/update sync. Global, audit-ready, and investor-facing. All actions automated.
+2697f6d Merge feature/voice-agent: voice, TUI, self-heal, registry, plugin stubs, meta-agent.
+c4108a2 Combined-AA-SCUS: Local catch-up — add voice agent, meta-agent, registry, cloudapi, BBS TUI, plugin stubs, and self-healing fixes. All backup and output files included for full context.
+ff5c81e SCUS: Add universal AI self-discovery, chaining, and logging manifest/runner for agents
+fc58bda Feature: Add voice agent with listen/speak and Artemis command trigger
+2696952 SCUS: Fix syntax and block logic for patch_api in magic loop (no more unexpected 'fi')
+8fd07a0 SCUS: Patch/restart uvicorn after healing API endpoint for guaranteed availability
+513291c SCUS: Full self-healing, endpoint patching, and agent reporting for magic loop
+9ae9426 SCUS: Add magic_loop_runner.sh to auto-run magic loop N times
+2e1415f SCUS: Fix Bash syntax in magic_loop_full.sh (API health check) [atomic]
+23f84ed SCUS: Add magic_loop_full.sh for full self-check and auto-fix of all project aspects
+f00cde6 SCUS: Add self-fixing magic loop tester for end-to-end agent/API/dashboard/VR
+82764aa SCUS: Add cloud cost monitor agent for AWS cost protection
+ebdfd4c SCUS: Add SQLite-based FastAPI auth for zero-cost local-only testing
+9ef2df8 SCUS: Add SQLite-based FastAPI auth for zero-cost local-only testing
+9d6626a SCUS: Implement AI agent/scene gen, onboarding, workflow, PWA, AR, gamification, copilot, gallery [atomic]
+d76cca0 Add web Agent Builder UI for natural agent creation [SCUS, atomic]
+84c843f SCUS: Add device and scene vision to agents, Unity, web API, and dashboard [atomic]
+5b2717e SCUS: Add voice, conversation, MCP, mission monitor, debug/webhook, and creative VR/AR mode [atomic]
+a9c3f38 Docs: Add TODO project tracker [SCUS, atomic]
+c1946f9 VR: Add Unity Scenes folder README [SCUS, atomic]
+6b4851c Docs: Add API example Jupyter notebook [SCUS, atomic]
+08aa3dc Docs: Add code of conduct [SCUS, atomic]
+7221dfd Docs: Add basic CONTRIBUTING.md onboarding [SCUS, atomic]
+cb9c880 Docs: Expand VR README for contributors [SCUS, atomic]
+bded741 Docs: Add Mission Gallery for contributed missions [SCUS, atomic]
+3dd38de Agent: Add Python agent template for contributors [SCUS, atomic]
+5e84c15 Tool: Add mini diagnostics CLI utility [SCUS, atomic]
+0126390 Chore: Expand .gitignore for local, Unity, and secret files [SCUS, atomic]
+3d1d60e Chore: Ignore local diagnostics outputs [SCUS, atomic]
+38a7cbe Test: Add basic API/agent test script [SCUS, atomic]
+ec10c32 VR: Add Unity StarterScene marker and instructions [SCUS, atomic]
+41f26f1 Chore: Harden onboarding, gitignore logs and diagnostics [SCUS, atomic]
+86bec6e Chore: gitignore diagnostics and logs [SCUS, atomic]
+1dc3f3c Add Unity VR project structure and ArtemisAPI.cs for live mission dashboard [SCUS, atomic]
+f018f95 SCUS: Bootstrap VR directory and onboarding README for Unity/WebXR integration
+9e2b10c Upgrade GitHub Pages to modern dashboard UI [SCUS, atomic]
+973fd4e Fix all agents: auto-create logs directory before log writes [SCUS, atomic]
+db7bb2c Trigger Pages workflow
+3c1ea45 Add GitHub Actions workflow for automated Pages deployment [SCUS, atomic]
+0841df7 Add optimized, stylized GitHub Pages site with live dashboard [SCUS, atomic]
+20277d5 Full performance/scalability upgrade: async API, caching, metrics, live logs, wow UX [SCUS, atomic]
+4db19b8 Restore universal agent self-test script [SCUS, atomic]
+e379f52 Update Artemis agent with latest improvements [SCUS, atomic]
+11bfacf Hybrid MVP/federal SCUS: Dockerfile, AWS template, compliance, README, Kanban [atomic]
+886fae2 Add Procfile for Heroku/Fly cloud deploy [SCUS, atomic]
+78bcc79 Add requirements.txt for FastAPI cloud deployment [SCUS, atomic]
+61a9704 Add FastAPI cloud backend for dashboard, agent API, and logs [SCUS, atomic]
+f00fb63 Add agent-to-agent payload template + validator test [SCUS, atomic]
+567de63 Add agent notification (Termux/desktop fallback) [SCUS, atomic]
+c51985e Update CONTRIBUTING.md for MVP readiness [SCUS, atomic]
+098f582 Enable CI/CD: automated agent test pipeline [SCUS, atomic]
+fbdfeae Upgrade: real-time dashboard, agent logging, and contribution links [SCUS, atomic]
+cd64ada Update README with Security Protections section [SCUS, terse, atomic]
+2d61c22 Add security protections: .gitignore for secrets, permissions hardening, pre-commit token alert, SHA-3 sum utility [SCUS, terse]
+3b287cd Add auto-provisioning setup.sh for termux and linux [SCUS, terse]
+b57c787 Update README (no bio): credits, premise, purpose, PR instructions, tech stack, and references [SCUS, terse, atomic]
+eb42d9b Add CodexAgent NASA Artemis status fetcher [SCUS, terse, atomic]
+6eb6ddf Add CI workflow: structure validation for Artemis CodexOps [SCUS, terse]
+8c63020 adding agent to agent protocol.
+18e2cb7 Initialize Artemis CodexOps project files [SCUS, terse, atomic]
+1f64293 Initial commit
