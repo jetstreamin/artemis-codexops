@@ -1,0 +1,27 @@
+[
+  {
+    "name": "voice_agent",
+    "path": "agents/voice_agent.py",
+    "type": "input/output",
+    "description": "Handles voice input and TTS output; can trigger agents by speech."
+  },
+  {
+    "name": "vision_agent",
+    "path": "agents/vision_agent.py",
+    "type": "camera/vision",
+    "description": "Captures device or VR scene image; used for visual workflows."
+  },
+  {
+    "name": "codexagent_nasa_artemis",
+    "path": "agents/codexagent_nasa_artemis.py",
+    "type": "mission/data",
+    "description": "Fetches Artemis mission data and status."
+  },
+  {
+    "name": "live_ui_tester",
+    "path": "agents/live_ui_tester.py",
+    "type": "test/e2e",
+    "description": "Runs end-to-end UI health and healing checks."
+  }
+  // ... add more agents as you build!
+]
