@@ -53,3 +53,6 @@ _“Built for NASA & explorers, by Jetstreamin.”_
 
 ## Local-Only Auth for Testing
 - Uses SQLite and FastAPI-Users. No cloud DB or paid infra. Not for prod use.
+
+## Local-Only Auth for Testing
+- Uses SQLite and FastAPI-Users. No cloud DB or paid infra. Not for prod use.
