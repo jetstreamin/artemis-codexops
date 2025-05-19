@@ -45,10 +45,6 @@ echo "[7/12] Workflow Builder UI..."
 
 # 8. Webhooks/Debug toggles (API test, patch if missing)
 echo "[8/12] Webhook/debug toggle endpoints..."
-patch_api() {
-  local ep=$1
-  if ! grep -q "$ep" cloudapi.py; then
-    echo -e "\n@app.get(\x27/api/$ep\x27)\ndef $ep():\n    return {\x27$ep\x27: True}" >> cloudapi.py
     ok "Patched /api/$ep endpoint"
     pkill -f 'uvicorn cloudapi:app' || true
     nohup uvicorn cloudapi:app --host 0.0.0.0 --port 8080 >/dev/null 2>&1 &
@@ -99,3 +95,29 @@ echo "[HEALTHGUARD] $(date) - Magic Loop run, all checks OK." >> logs/health_gua
 
 echo ""
 ok "Magic Loop: ALL critical system aspects tested, fixed, and logged!"
+
+patch_api() {
+  local ep=$1
+  if ! grep -q "$ep" cloudapi.py; then
+    echo -e "\n@app.get('/api/$ep')\ndef $ep():\n    return {'$ep': True}" >> cloudapi.py
+    ok "Patched /api/$ep endpoint"
+    pkill -f 'uvicorn cloudapi:app' || true
+    nohup uvicorn cloudapi:app --host 0.0.0.0 --port 8080 >/dev/null 2>&1 &
+    sleep 5
+  fi
+}
+
+for ep in toggle_debug toggle_webhook; do
+  res=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/api/$ep)
+  if [ "$res" = "404" ]; then
+    patch_api "$ep"
+    res=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/api/$ep)
+    if [ "$res" = "200" ]; then
+      ok "$ep now fixed"
+    else
+      fail "$ep endpoint could not be patched"
+    fi
+  else
+    ok "$ep endpoint present"
+  fi
+done
