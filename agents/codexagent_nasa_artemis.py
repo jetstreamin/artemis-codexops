@@ -1,3 +1,5 @@
+import os
+os.makedirs("logs", exist_ok=True)
 #!/usr/bin/env python3
 """
 CodexAgent NASA Artemis Status Fetcher

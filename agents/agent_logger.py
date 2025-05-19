@@ -1,3 +1,5 @@
+import os
+os.makedirs("logs", exist_ok=True)
 #!/usr/bin/env python3
 import json, time, os, sys
 
