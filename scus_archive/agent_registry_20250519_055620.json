@@ -1,0 +1,42 @@
+[{"name":"demo_agent","status":"active","type":"demo","registered_at":"2025-05-19T09:49:44Z"},[
+  {
+    "name": "codexagent_artemis",
+    "path": "agents/codexagent_artemis.py"
+  },
+  {
+    "name": "codexagent_nasa_artemis",
+    "path": "agents/codexagent_nasa_artemis.py"
+  },
+  {
+    "name": "agent_logger",
+    "path": "agents/agent_logger.py"
+  },
+  {
+    "name": "notify",
+    "path": "agents/notify.py"
+  },
+  {
+    "name": "agent_template",
+    "path": "agents/agent_template.py"
+  },
+  {
+    "name": "voice_agent",
+    "path": "agents/voice_agent.py"
+  },
+  {
+    "name": "mission_monitor",
+    "path": "agents/mission_monitor.py"
+  },
+  {
+    "name": "vision_agent",
+    "path": "agents/vision_agent.py"
+  },
+  {
+    "name": "cost_monitor",
+    "path": "agents/cost_monitor.py"
+  },
+  {
+    "name": "ai_self_discover",
+    "path": "agents/ai_self_discover.py"
+  }
+]

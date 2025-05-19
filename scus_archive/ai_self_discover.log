@@ -1,0 +1,5 @@
+{"event": "greet", "details": "Hello, I am Artemis. Ready to scan and run agents for you!"}
+{"event": "greet", "details": "Hello, I am Artemis. Ready to scan and run agents for you!"}
+{"event": "greet", "details": "Hello, I am Artemis. Ready to scan and run agents for you!"}
+{"event": "run_agent", "details": "voice_agent"}
+{"event": "greet", "details": "Hello, I am Artemis. Ready to scan and run agents for you!"}
