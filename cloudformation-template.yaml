@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Artemis CodexOps (MVP) – Docker/ECS Service for AWS, FedRAMP, Enterprise
+Resources:
+  CodexOpsCluster:
+    Type: AWS::ECS::Cluster
+  CodexOpsTaskDef:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Family: codexops
+      Cpu: '256'
+      Memory: '512'
+      NetworkMode: awsvpc
+      RequiresCompatibilities: [FARGATE]
+      ExecutionRoleArn: !Sub arn:aws:iam::${AWS::AccountId}:role/ecsTaskExecutionRole
+      ContainerDefinitions:
+        - Name: codexops
+          Image: <YOUR_ECR_IMAGE>
+          PortMappings:
+            - ContainerPort: 8080
+  CodexOpsService:
+    Type: AWS::ECS::Service
+    Properties:
+      Cluster: !Ref CodexOpsCluster
+      TaskDefinition: !Ref CodexOpsTaskDef
+      DesiredCount: 1
+      LaunchType: FARGATE
+      NetworkConfiguration:
+        AwsvpcConfiguration:
+          AssignPublicIp: ENABLED
+          Subnets: [<YOUR_SUBNET_ID>]
+          SecurityGroups: [<YOUR_SECURITY_GROUP_ID>]
