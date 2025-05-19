@@ -1,11 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Artemis CodexOps</title>
+  <title>Artemis CodexOps Dashboard</title>
+  <style>
+    body { font-family: sans-serif; background: #18192a; color: #eee; margin: 0; padding: 2em;}
+    h1 { color: #fffd38; }
+    pre { background: #222; padding: 1em; border-radius: 6px;}
+    section { margin-bottom: 2em; }
+    a { color: #80bfff; }
+    .logs { max-height: 200px; overflow: auto; font-size: 90%; }
+  </style>
+  <script>
+    function poll() {
+      fetch('/logs/agent_status.json').then(x=>x.json()).then(d=>{
+        document.getElementById('agent-status').textContent = JSON.stringify(d,null,2)
+      }).catch(()=>{document.getElementById('agent-status').textContent = 'Not yet run.';});
+      fetch('/logs/agent.log').then(x=>x.text()).then(t=>{
+        document.getElementById('agent-log').textContent = t.split('\\n').slice(-10).join('\\n')
+      }).catch(()=>{document.getElementById('agent-log').textContent = 'No logs.';});
+      fetch('/agents/codexagent_nasa_artemis.py').then(x=>x.json()).then(d=>{
+        document.getElementById('artemis-status').textContent = JSON.stringify(d,null,2)
+      }).catch(()=>{document.getElementById('artemis-status').textContent = 'Offline or local mode.';});
+    }
+    setInterval(poll, 30000);
+    window.onload = poll;
+  </script>
 </head>
 <body>
-  <h1>Artemis CodexOps</h1>
-  <p>Supporting NASA’s return to the Moon with open AI, automation, and VR tools.</p>
-  <p>Follow progress and contribute at: <a href="https://github.com/jetstreamin/artemis-codexops">GitHub Repo</a></p>
+  <h1>Artemis CodexOps Dashboard</h1>
+  <section>
+    <h2>Live Artemis Mission Status</h2>
+    <pre id="artemis-status">Loading...</pre>
+  </section>
+  <section>
+    <h2>Agent Health/Status</h2>
+    <pre id="agent-status">Loading...</pre>
+  </section>
+  <section>
+    <h2>Agent Activity Log (last 10 events)</h2>
+    <pre id="agent-log">Loading...</pre>
+  </section>
+  <section>
+    <h2>Get Involved</h2>
+    <ul>
+      <li><a href="https://github.com/jetstreamin/artemis-codexops/pulls" target="_blank">Open a pull request</a></li>
+      <li><a href="https://github.com/jetstreamin/artemis-codexops/issues" target="_blank">File an issue</a></li>
+      <li><a href="https://github.com/jetstreamin/artemis-codexops/blob/main/CONTRIBUTING.md" target="_blank">How to contribute</a></li>
+    </ul>
+  </section>
 </body>
 </html>
