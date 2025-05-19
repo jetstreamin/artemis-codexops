@@ -36,3 +36,4 @@ project_state.txt
 *.env
 *.secret
 *.token
+audit_weekly.txt

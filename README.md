@@ -63,3 +63,11 @@ eb42d9b Add CodexAgent NASA Artemis status fetcher [SCUS, terse, atomic]
 8c63020 adding agent to agent protocol.
 18e2cb7 Initialize Artemis CodexOps project files [SCUS, terse, atomic]
 1f64293 Initial commit
+
+## Weekly Audit
+eb42d9b Add CodexAgent NASA Artemis status fetcher [SCUS, terse, atomic]
+6eb6ddf Add CI workflow: structure validation for Artemis CodexOps [SCUS, terse]
+8c63020 adding agent to agent protocol.
+18e2cb7 Initialize Artemis CodexOps project files [SCUS, terse, atomic]
+1f64293 Initial commit
+
