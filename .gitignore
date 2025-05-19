@@ -20,3 +20,8 @@ __pycache__/
 diagnostics_report.txt
 logs/
 project_sync_diagnostics.sh
+logs/
+diagnostics_report.txt
+project_sync_diagnostics.sh
+*.unitypackage
+
