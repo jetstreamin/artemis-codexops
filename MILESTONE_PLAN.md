@@ -1,3 +1,5 @@
+> **NOTE:** All instances of ‘meta’ are renamed as ‘neta’ (a tribute).
+
 # Milestone: Agent SELF-POST Integration
 
 ## Objective

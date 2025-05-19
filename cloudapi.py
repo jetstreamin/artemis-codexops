@@ -6,6 +6,15 @@ import subprocess, os, json, time, asyncio, threading
 
 app = FastAPI(title="Artemis CodexOps API")
 
+@app.post("/api/agent_post")
+def agent_post(request):
+    import asyncio
+    data = asyncio.run(request.json())
+    with open("logs/agent_mesh.log","a") as f:
+        import json; f.write(json.dumps(data)+"\n")
+    return {"msg":"Agent registered","agent": data.get("agent_name")}
+
+
 DEBUG_MONITOR = False
 WEBHOOK_ON = False
 
@@ -121,7 +130,7 @@ def run_agent_sync(cmd):
 
 @app.get("/")
 def root():
-    return HTMLResponse('<meta http-equiv="refresh" content="0;URL=\'/web/\'" />')
+    return HTMLResponse('<neta http-equiv="refresh" content="0;URL=\'/web/\'" />')
 
 @app.get("/api/artemis")
 async def artemis_status():

@@ -1,0 +1,55 @@
+==== GIT STATUS ====
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   README.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	neta/
+	repo_audit_status.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+==== LATEST COMMITS ====
+2697f6d Merge feature/voice-agent: voice, TUI, self-heal, registry, plugin stubs, neta-agent.
+c4108a2 Combined-AA-SCUS: Local catch-up — add voice agent, neta-agent, registry, cloudapi, BBS TUI, plugin stubs, and self-healing fixes. All backup and output files included for full context.
+ff5c81e SCUS: Add universal AI self-discovery, chaining, and logging manifest/runner for agents
+fc58bda Feature: Add voice agent with listen/speak and Artemis command trigger
+2696952 SCUS: Fix syntax and block logic for patch_api in magic loop (no more unexpected 'fi')
+==== TAGS ====
+v2.0.0-unified
+==== BRANCHES ====
+  feature/voice-agent
+* main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/main
+==== MERGED BRANCHES ====
+  feature/voice-agent
+* main
+==== UNMERGED BRANCHES ====
+==== README HEAD ====
+# Artemis CodexOps — Unified Meta-Agent Platform
+
+**Version:** v2.0.0-unified  
+**Main Branch:** production-ready, fully integrated  
+**Personality:** [Artemis: BBS-inspired, context-aware, witty, and professional neta-agent]
+
+## Overview
+
+Artemis CodexOps is a serverless, self-healing, auto-scaling agent orchestration system—deployable anywhere (cloud, edge, VR/AR, mobile).  
+All features, plugins, and neta-agents are unified and discoverable.  
+Persona, branding, and security context are loaded system-wide.
+
+## Core Features
+
+- **Voice and Vision agents always ON by default**
+- **BBS/TUI, Web, and API interfaces with shared persona/context**
+- **Plugin architecture:** Drop-in plugins auto-discovered and enabled
+- **Meta-agent orchestration:** Context/rule-based agent chaining, auto-healing, self-documenting
+- **Professional audit/compliance:** All changes, merges, and PRs tracked, tagged, and reviewable
+- **Security:** End-to-end encrypted, dual public/secure modes, federated SSO/SSO, full logging
+==== CHANGELOG HEAD ====
+No CHANGELOG.md found.

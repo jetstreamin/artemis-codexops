@@ -98,7 +98,7 @@ def run_agent_sync(cmd):
 
 @app.get("/")
 def root():
-    return HTMLResponse('<meta http-equiv="refresh" content="0;URL=\'/web/\'" />')
+    return HTMLResponse('<neta http-equiv="refresh" content="0;URL=\'/web/\'" />')
 
 @app.get("/api/artemis")
 async def artemis_status():

@@ -2,8 +2,8 @@
 37b08d7 SCUS: Auto-decide — repaired magic_loop_full.sh, validated health, pushed clean state.
 a653d18 SCUS: Proceed with multilingual/AI, cloud user profile, investor prospectus, and interactive dashboard automation. All systems audit-ready and globally scalable.
 fa212d9 SCUS: One-stop multilingual/AI, user profile cloud, GitHub Pages with dynamic investor/market support, and full doc/update sync. Global, audit-ready, and investor-facing. All actions automated.
-2697f6d Merge feature/voice-agent: voice, TUI, self-heal, registry, plugin stubs, meta-agent.
-c4108a2 Combined-AA-SCUS: Local catch-up — add voice agent, meta-agent, registry, cloudapi, BBS TUI, plugin stubs, and self-healing fixes. All backup and output files included for full context.
+2697f6d Merge feature/voice-agent: voice, TUI, self-heal, registry, plugin stubs, neta-agent.
+c4108a2 Combined-AA-SCUS: Local catch-up — add voice agent, neta-agent, registry, cloudapi, BBS TUI, plugin stubs, and self-healing fixes. All backup and output files included for full context.
 ff5c81e SCUS: Add universal AI self-discovery, chaining, and logging manifest/runner for agents
 fc58bda Feature: Add voice agent with listen/speak and Artemis command trigger
 2696952 SCUS: Fix syntax and block logic for patch_api in magic loop (no more unexpected 'fi')

@@ -1,3 +1,5 @@
+> **NOTE:** All instances of ‘meta’ are renamed as ‘neta’ (a tribute).
+
 # Milestone Completed: 2025-05-19 02:04
 
 ## Milestone Audit Summary
