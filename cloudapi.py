@@ -4,7 +4,23 @@ from fastapi.responses import JSONResponse, FileResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
 import subprocess, os, json, time, asyncio, threading
 
-app = FastAPI(title="Artemis CodexOps API")
+
+@app.get("/api/toggle_debug")
+def toggle_debug():
+    global DEBUG_MONITOR
+    DEBUG_MONITOR = not DEBUG_MONITOR
+    return {"debug": DEBUG_MONITOR}
+
+@app.get("/api/toggle_webhook")
+def toggle_webhook():
+    global WEBHOOK_ON
+    WEBHOOK_ON = not WEBHOOK_ON
+    return {"webhook": WEBHOOK_ON}
+
+
+DEBUG_MONITOR = False
+WEBHOOK_ON = False
+
 app.mount("/web", StaticFiles(directory="web", html=True), name="web")
 app.mount("/logs", StaticFiles(directory="logs", html=True), name="logs")
 

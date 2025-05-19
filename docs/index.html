@@ -128,6 +128,7 @@
   </script>
 </head>
 <body>
+<button onclick="toggleDebug()">Toggle Debug</button><button onclick="toggleWebhook()">Toggle Webhook</button><script>function toggleDebug(){fetch("/api/toggle_debug")};function toggleWebhook(){fetch("/api/toggle_webhook")};</script>
   <div class="container">
     <h1>Artemis CodexOps</h1>
     <div class="status-block">

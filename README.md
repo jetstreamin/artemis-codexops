@@ -18,3 +18,27 @@ _“Built for NASA & explorers, by Jetstreamin.”_
 - **Compliance:** See COMPLIANCE_CHECKLIST.md for requirements and current status.
 - **Contact:** For onboarding or regulated deployments, [open an issue or email yourteam@yourdomain.com](mailto:yourteam@yourdomain.com).
 
+
+## Option: Auto-load MCP tools
+- Place any MCP tools/scripts in cli/mcp_tools/. Agents will auto-import if present.
+
+## Voice & Conversation
+- Run `python agents/voice_agent.py` for natural language conversation and agent control (requires mic).
+- Optionally extend with Whisper (for transcription) or GPT for AI responses.
+
+## VR/AR/Creative Mode
+- Open the Unity VR project in vr/unity/. Build scenes, drag ArtemisAPI.cs onto 3D UI, create your own worlds!
+- Everything in VR can be driven by API/agent commands or voice (see above).
+- Encourage experimentation: “Describe what you want and have the agents/VR respond!”
+
+## Mission Monitor
+- Run `python agents/mission_monitor.py` to monitor and log agent status, trigger webhooks, or debug.
+
+## Webhooks/Debug
+- Use dashboard buttons to enable/disable debug output and webhook mode.
+- Set `WEBHOOK_URL` env var for outgoing events.
+
+## Optionability & Fun
+- Every feature has an on/off toggle. Everything can be mixed: CLI, voice, VR, web, mobile.
+- Designed so ANYONE can create, remix, and play.
+
