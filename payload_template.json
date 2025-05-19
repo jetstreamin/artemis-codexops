@@ -1,0 +1,12 @@
+[
+  {
+    "file": "README.md",
+    "action": "update",
+    "content": "Update README content here."
+  },
+  {
+    "file": "web/index.html",
+    "action": "update",
+    "content": "<!-- Update dashboard or web UI here -->"
+  }
+]
