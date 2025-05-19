@@ -31,8 +31,34 @@ def explain_chain(chain):
 def run_chain(chain):
     for agent in chain:
         print(f"Running {agent['name']}...")
-        subprocess.run(["python", agent["path"]])
-        log_action("run_agent", agent["name"])
+        healed = False
+        for _ in range(2):  # try twice: original and after healing
+            result = subprocess.run(
+                ["python", agent["path"]],
+                capture_output=True, text=True
+            )
+            if result.returncode == 0:
+                print(result.stdout)
+                log_action("run_agent", agent["name"])
+                break
+            err = result.stderr
+            # Self-heal missing module
+            for error_prefix in ["ModuleNotFoundError: No module named", "ImportError: No module named"]:
+                if error_prefix in err:
+                    missing = err.split(error_prefix)[-1].split("'")[1]
+                    print(f"Auto-heal: pip install {missing}")
+                    log_action("auto_heal_install", missing)
+                    subprocess.run(["pip", "install", missing])
+                    healed = True
+                    break
+            else:
+                print(result.stdout)
+                print(err)
+                log_action("agent_failed", {"agent": agent["name"], "stderr": err})
+                break
+            if not healed:
+                break
+
 
 def match_goal(goal, agents):
     # Naive NL matching for demo—expand as needed

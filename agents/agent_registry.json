@@ -23,5 +23,4 @@
     "type": "test/e2e",
     "description": "Runs end-to-end UI health and healing checks."
   }
-  // ... add more agents as you build!
 ]
