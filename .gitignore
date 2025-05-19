@@ -1,0 +1,19 @@
+# Secrets, credentials, and local state (security best practice)
+*.env
+.env
+*.token
+*.secret
+*.key
+*.pem
+*.p12
+*.crt
+*.der
+secrets.*
+token.*
+id_rsa
+id_rsa.*
+id_ed25519
+id_ed25519.*
+.git-credentials
+__pycache__/
+.DS_Store
