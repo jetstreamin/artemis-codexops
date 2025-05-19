@@ -1,4 +1,4 @@
-[
+[{"name":"demo_agent","status":"active","type":"demo","registered_at":"2025-05-19T09:49:44Z"},[
   {
     "name": "codexagent_artemis",
     "path": "agents/codexagent_artemis.py"
