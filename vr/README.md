@@ -23,3 +23,7 @@ Update the URL if you self-host.
 - Fork, add new Unity VR scenes, agents, or visualizations, PR back to `vr/unity/`.
 - Optional: add a WebXR Three.js version in `vr/webxr/`.
 
+
+## Contributing VR Scenes
+- Fork, clone, and add Unity or WebXR assets to vr/.
+- PR your scene and describe the agent/data flow.
