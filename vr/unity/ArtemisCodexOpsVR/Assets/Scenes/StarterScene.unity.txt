@@ -1,0 +1,2 @@
+# Unity scene marker (add a real .unity file in Unity editor)
+# Open in Unity, add XR Rig, Canvas, TextMeshProUGUI, ArtemisAPI.cs
