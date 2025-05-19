@@ -38,3 +38,6 @@ project_state.txt
 *.token
 audit_weekly.txt
 milestone_audit_report.txt
+milestone_health.log
+milestone_audit.txt
+milestone_weekly.txt
