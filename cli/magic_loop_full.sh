@@ -12,9 +12,11 @@ out=$(python agents/codexagent_nasa_artemis.py 2>&1) || fail "Agent fail: $out"
 echo "$out" | grep -qi 'status' && ok "Agent mission data" || fail "Agent output bad"
 
 # 2. API health
-echo "[2/11] API endpoint..."
-pid=$(pgrep -f 'uvicorn cloudapi:app' || true)
-[ -z "$pid" ] && nohup uvicorn cloudapi:app --host 0.0.0.0 --port 8080 >/dev/null 2>&1 &; sleep 3
+pid=$(pgrep -f "uvicorn cloudapi:app" || true)
+if [ -z "$pid" ]; then
+  nohup uvicorn cloudapi:app --host 0.0.0.0 --port 8080 >/dev/null 2>&1 &
+  sleep 3
+fi
 api=$(curl -s http://localhost:8080/api/artemis) || fail "API dead"
 echo "$api" | grep -qi 'status' && ok "API OK" || fail "API bad"
 
