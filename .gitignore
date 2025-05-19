@@ -37,3 +37,4 @@ project_state.txt
 *.secret
 *.token
 audit_weekly.txt
+milestone_audit_report.txt
