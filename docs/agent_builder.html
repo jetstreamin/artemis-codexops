@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><title>Agent Builder – Artemis CodexOps</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: 'Montserrat', Arial, sans-serif; background: #161a2c; color: #dff; margin: 0; padding: 2em; }
+    h1 { color: #47ffd1; font-size: 2.2em; }
+    label, input, select, textarea { font-size: 1.1em; margin-bottom: 0.4em; }
+    .card { background: #24294b; border-radius: 12px; padding: 1.5em; max-width: 550px; margin: auto; box-shadow: 0 6px 18px #0003; }
+    button { background: #47ffd1; color: #181a20; border: none; border-radius: 7px; padding: 0.6em 1.4em; font-weight: bold; cursor: pointer; margin-top: 1em; }
+    button:hover { background: #33bb99; }
+    .output { background: #232846; border-radius: 7px; margin-top: 1em; padding: 1em; color: #7fffd4; }
+  </style>
+  <script>
+    async function generateAgent() {
+      const name = document.getElementById('agent_name').value;
+      const type = document.getElementById('agent_type').value;
+      const trigger = document.getElementById('agent_trigger').value;
+      const action = document.getElementById('agent_action').value;
+      const prompt = `Create a Python agent named "${name}" that activates when "${trigger}" and then "${action}". This agent type is: ${type}`;
+      // Call OpenAI API or local LLM (optional) for autogen
+      document.getElementById('out').textContent = "// TODO: Add OpenAI agent code autogen integration here.\n\n" +
+        `# Agent name: ${name}\n# Type: ${type}\n# Trigger: ${trigger}\n# Action: ${action}\n\n` +
+        `def main():\n    # Implement agent logic\n    pass\n\nif __name__ == '__main__':\n    main()`;
+    }
+  </script>
+</head>
+<body>
+  <div class="card">
+    <h1>Agent Builder</h1>
+    <label>Agent Name: <input id="agent_name" placeholder="FriendlyAgent"></label><br>
+    <label>Type:
+      <select id="agent_type">
+        <option value="Voice">Voice</option>
+        <option value="Vision">Vision</option>
+        <option value="VR">VR/AR</option>
+        <option value="Workflow">Workflow</option>
+        <option value="Notification">Notification</option>
+        <option value="Other">Other</option>
+      </select>
+    </label><br>
+    <label>When this happens (Trigger):<br>
+      <input id="agent_trigger" placeholder="I say 'hello'" style="width:90%;">
+    </label><br>
+    <label>Do this (Action):<br>
+      <textarea id="agent_action" rows="2" style="width:90%;" placeholder="Speak a welcome message, capture a photo, start VR scene..."></textarea>
+    </label><br>
+    <button onclick="generateAgent()">Build Agent</button>
+    <div class="output" id="out"></div>
+  </div>
+</body>
+</html>
