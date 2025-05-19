@@ -30,7 +30,6 @@
 [8/12] Webhook/debug toggle endpoints...
 ✅ Patched /api/ endpoint
 [Magic Loop] All checks passed!
-[BLOCKER] Demo agent not found in registry. Please register demo_agent.
 [BLOCKER] Demo payload POST failed.
 [SCUS] Dependency and risk report present and valid.
 
