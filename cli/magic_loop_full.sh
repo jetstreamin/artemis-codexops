@@ -46,9 +46,15 @@ echo "[7/12] Workflow Builder UI..."
 # 8. Webhooks/Debug toggles (API test, patch if missing)
 echo "[8/12] Webhook/debug toggle endpoints..."
 patch_api() {
-  local ep=$1 code=$2
+  local ep=$1
   if ! grep -q "$ep" cloudapi.py; then
-    echo -e "\n@app.get('/api/$ep')\ndef $ep():\n    return {'$ep': True}" >> cloudapi.py
+    echo -e "\n@app.get(\x27/api/$ep\x27)\ndef $ep():\n    return {\x27$ep\x27: True}" >> cloudapi.py
+    ok "Patched /api/$ep endpoint"
+    pkill -f 'uvicorn cloudapi:app' || true
+    nohup uvicorn cloudapi:app --host 0.0.0.0 --port 8080 >/dev/null 2>&1 &
+    sleep 5
+  fi
+}
     ok "Patched /api/$ep endpoint"
     nohup uvicorn cloudapi:app --host 0.0.0.0 --port 8080 >/dev/null 2>&1 &
     sleep 3
