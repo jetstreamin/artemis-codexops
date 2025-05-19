@@ -56,3 +56,7 @@ _“Built for NASA & explorers, by Jetstreamin.”_
 
 ## Local-Only Auth for Testing
 - Uses SQLite and FastAPI-Users. No cloud DB or paid infra. Not for prod use.
+
+## Cloud Cost Monitor
+- Run: python agents/cost_monitor.py
+- Alerts if any AWS RDS/EC2 is active. Extend for S3, Lambda, GCP, Azure, etc.
