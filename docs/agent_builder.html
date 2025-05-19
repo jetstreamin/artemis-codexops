@@ -21,6 +21,22 @@
       const prompt = `Create a Python agent named "${name}" that activates when "${trigger}" and then "${action}". This agent type is: ${type}`;
       // Call OpenAI API or local LLM (optional) for autogen
       document.getElementById('out').textContent = "// TODO: Add OpenAI agent code autogen integration here.\n\n" +
+fetch("https://api.openai.com/v1/chat/completions",{
+  method:"POST",
+  headers:{
+    "Content-Type":"application/json",
+    "Authorization":"Bearer YOUR_OPENAI_API_KEY"
+  },
+  body:JSON.stringify({
+    model:"gpt-4o",
+    messages:[{role:"user",content:prompt}]
+  })
+}).then(r=>r.json()).then(d=>{
+  if(d.choices){
+    document.getElementById("out").textContent=d.choices[0].message.content;
+if(window.speechSynthesis){let u=new SpeechSynthesisUtterance(d.choices[0].message.content);speechSynthesis.speak(u);}
+  }
+});
         `# Agent name: ${name}\n# Type: ${type}\n# Trigger: ${trigger}\n# Action: ${action}\n\n` +
         `def main():\n    # Implement agent logic\n    pass\n\nif __name__ == '__main__':\n    main()`;
     }

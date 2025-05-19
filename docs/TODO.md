@@ -1,6 +1,8 @@
 # Project TODO
-
-- [ ] Build and commit a demo VR scene.
-- [ ] Add more agent templates and tests.
-- [ ] Expand documentation with API/VR screenshots.
-- [ ] Outreach to new contributors.
+- [ ] AI agent/scene autogen (OpenAI integrated)
+- [ ] Guided onboarding wizard (web and VR)
+- [ ] Gallery: Remix/share agent and scene creations
+- [ ] Workflow/block builder UI and logic
+- [ ] AR mode, PWA, and TTS everywhere
+- [ ] Gamification/achievements
+- [ ] Copilot/AI help

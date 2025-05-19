@@ -1,0 +1,4 @@
+1. Open this scene in Unity.
+2. Drag in XR Rig, Canvas, TextMeshProUGUI, ArtemisAPI.cs, and VisionCapture.cs.
+3. Run and speak/type to interact with agents or scene.
+4. Share your scene for the gallery!

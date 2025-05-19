@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="manifest" href="manifest.json">
+<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js");}</script>
   <meta charset="UTF-8">
   <title>Artemis CodexOps – MissionOps for Everyone</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -128,6 +130,7 @@
   </script>
 </head>
 <body>
+<div style="position:fixed;top:8px;right:8px;z-index:999;color:#ffe066;font-weight:700;background:#222;padding:0.4em 1em;border-radius:10px;">🏆 Achievements: Coming Soon</div>
 <button onclick="toggleDebug()">Toggle Debug</button><button onclick="toggleWebhook()">Toggle Webhook</button><script>function toggleDebug(){fetch("/api/toggle_debug")};function toggleWebhook(){fetch("/api/toggle_webhook")};</script>
   <div class="container">
     <h1>Artemis CodexOps</h1>
@@ -184,3 +187,4 @@ uvicorn cloudapi:app --host 0.0.0.0 --port 8080
 
 </body>
 </html>
+<a href="ar.html" style="margin-left:1em;font-weight:700;color:#7fffd4;">AR Mode</a>
