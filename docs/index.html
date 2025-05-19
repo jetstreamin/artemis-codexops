@@ -168,5 +168,19 @@ uvicorn cloudapi:app --host 0.0.0.0 --port 8080
       <span style="color:#38ffb0;">Open Automation for Space &amp; Beyond.</span>
     </div>
   </div>
+  <div class="card">
+  <h2>Vision Agent</h2>
+  <div id="vision-photos"></div>
+  <button onclick="fetchVision()">Refresh Vision</button>
+  <script>
+  function fetchVision() {
+    fetch("/api/vision").then(x=>x.json()).then(d=>{
+      let v = d.images.map(f=>`<a href="${f}" target="_blank"><img src="${f}" height="64"></a>`).join("");
+      document.getElementById("vision-photos").innerHTML = v;
+    });
+  }
+  </script>
+  </div>
+
 </body>
 </html>

@@ -42,3 +42,11 @@ _“Built for NASA & explorers, by Jetstreamin.”_
 - Every feature has an on/off toggle. Everything can be mixed: CLI, voice, VR, web, mobile.
 - Designed so ANYONE can create, remix, and play.
 
+
+## Vision Agents (Camera & Scene)
+
+- **Capture with device camera:** `python agents/vision_agent.py`
+- **Capture Unity VR scene:** Add VisionCapture.cs to any camera, press [C] in Play mode to save screenshot.
+- **Access vision images in dashboard:** Use the Vision section (or /api/vision).
+- **Use for AI/automation:** Process, share, or use captured images as agent context for creative, AR, or workflow triggers.
+
