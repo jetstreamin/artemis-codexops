@@ -1,26 +1,3 @@
-#!/usr/bin/env python3
-from fastapi import FastAPI, Request, BackgroundTasks, WebSocket
-from fastapi.responses import JSONResponse, FileResponse, HTMLResponse
-from fastapi.staticfiles import StaticFiles
-import subprocess, os, json, time, asyncio, threading
-
-app = FastAPI(title="Artemis CodexOps API")
-
-DEBUG_MONITOR = False
-WEBHOOK_ON = False
-
-@app.get('/api/toggle_debug')
-def toggle_debug():
-    global DEBUG_MONITOR
-    DEBUG_MONITOR = not DEBUG_MONITOR
-    return {'debug': DEBUG_MONITOR}
-
-@app.get('/api/toggle_webhook')
-def toggle_webhook():
-    global WEBHOOK_ON
-    WEBHOOK_ON = not WEBHOOK_ON
-    return {'webhook': WEBHOOK_ON}
-
 
 DEBUG_MONITOR = False
 WEBHOOK_ON = False
