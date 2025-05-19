@@ -50,3 +50,6 @@ _“Built for NASA & explorers, by Jetstreamin.”_
 - **Access vision images in dashboard:** Use the Vision section (or /api/vision).
 - **Use for AI/automation:** Process, share, or use captured images as agent context for creative, AR, or workflow triggers.
 
+
+## Local-Only Auth for Testing
+- Uses SQLite and FastAPI-Users. No cloud DB or paid infra. Not for prod use.
