@@ -1,19 +1,25 @@
 # Artemis CodexOps VR
 
-This folder is for all VR assets, demos, and integrations for Artemis CodexOps.
+All VR assets for Artemis CodexOps live here.
 
 ## Unity VR (Recommended)
-- Open or create your Unity project in `vr/unity/`.
-- Use the latest Unity LTS and add XR Plugin Management.
-- Connect your Unity scene to the live Artemis CodexOps API:
-  - Example: fetch mission status or logs from your cloud API using a C# script and display it in VR space.
+
+- Open Unity Hub, click "Add project" and select `vr/unity/ArtemisCodexOpsVR`.
+- Recommended Unity Version: **2022 LTS or newer**.
+- Install **XR Plugin Management** (via Package Manager).
+- Add **XR Rig** and set up XR Interaction Toolkit for VR.
+- Add a Canvas and a TextMeshProUGUI element to your scene.
+- Attach `ArtemisAPI.cs` to any GameObject (e.g. a manager or UI panel).
+- Drag your TextMeshProUGUI object to the `statusText` field in the Inspector.
+- Enter Play mode: Artemis mission data will appear in VR!
+
+## API Integration
+
+The `ArtemisAPI.cs` script fetches live Artemis mission data from your cloud API.
+Update the URL if you self-host.
 
 ## Contributing
-- Fork and add Unity or WebXR projects to `vr/`.
-- Create VR dashboards, lunar scenes, 3D agent status UIs, or anything immersive.
-- Submit PRs to share new VR visualizations or agent tools.
 
-## Next Steps
-- Drop a Unity URP project in `vr/unity/`.
-- Add C# script to poll `https://artemis-codexops.fly.dev/api/artemis` and display status in VR.
-- Update this README as VR modules grow.
+- Fork, add new Unity VR scenes, agents, or visualizations, PR back to `vr/unity/`.
+- Optional: add a WebXR Three.js version in `vr/webxr/`.
+
