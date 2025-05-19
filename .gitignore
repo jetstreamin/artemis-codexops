@@ -25,3 +25,5 @@ diagnostics_report.txt
 project_sync_diagnostics.sh
 *.unitypackage
 
+latest_artemis_api.json
+project_state.txt
