@@ -1,62 +1,49 @@
-# Artemis CodexOps
+# Artemis CodexOps — Unified Meta-Agent Platform
 
-Open, automation-ready, AI-augmented toolkit supporting NASA Artemis missions.
+**Version:** v2.0.0-unified  
+**Main Branch:** production-ready, fully integrated  
+**Personality:** [Artemis: BBS-inspired, context-aware, witty, and professional meta-agent]
 
-**Roadmap:**
-1. CodexAgent for Artemis mission data
-2. Unity/VR lunar simulation
-3. Real-time open APIs + automation
-4. STEM/Outreach tools
-5. Contributor-friendly, CI-ready, public by design
+## Overview
 
-_“Built for NASA & explorers, by Jetstreamin.”_
+Artemis CodexOps is a serverless, self-healing, auto-scaling agent orchestration system—deployable anywhere (cloud, edge, VR/AR, mobile).  
+All features, plugins, and meta-agents are unified and discoverable.  
+Persona, branding, and security context are loaded system-wide.
 
-## 🚀 Public Demo & Enterprise/Federal-Ready
+## Core Features
 
-- **Live demo:** Deploy instantly to Fly.io, Heroku, or any open cloud for real-time value and collaboration.
-- **Portable:** Dockerfile and AWS CloudFormation template included for production/FedRAMP/enterprise use.
-- **Compliance:** See COMPLIANCE_CHECKLIST.md for requirements and current status.
-- **Contact:** For onboarding or regulated deployments, [open an issue or email yourteam@yourdomain.com](mailto:yourteam@yourdomain.com).
+- **Voice and Vision agents always ON by default**
+- **BBS/TUI, Web, and API interfaces with shared persona/context**
+- **Plugin architecture:** Drop-in plugins auto-discovered and enabled
+- **Meta-agent orchestration:** Context/rule-based agent chaining, auto-healing, self-documenting
+- **Professional audit/compliance:** All changes, merges, and PRs tracked, tagged, and reviewable
+- **Security:** End-to-end encrypted, dual public/secure modes, federated SSO/SSO, full logging
+- **Budgeted autoscaling:** AWS/Lambda/S3/CloudFront optimized for $150/mo, hard limits enabled
+- **Business modules:** Merch shop, domain brokerage, analytics, and extensible marketplace
 
+## Deployment
 
-## Option: Auto-load MCP tools
-- Place any MCP tools/scripts in cli/mcp_tools/. Agents will auto-import if present.
+- See [deployment.md](deployment.md) for CI/CD, AWS, and auto-healing setup.
 
-## Voice & Conversation
-- Run `python agents/voice_agent.py` for natural language conversation and agent control (requires mic).
-- Optionally extend with Whisper (for transcription) or GPT for AI responses.
+## Documentation Structure
 
-## VR/AR/Creative Mode
-- Open the Unity VR project in vr/unity/. Build scenes, drag ArtemisAPI.cs onto 3D UI, create your own worlds!
-- Everything in VR can be driven by API/agent commands or voice (see above).
-- Encourage experimentation: “Describe what you want and have the agents/VR respond!”
+- [README.md] — Project summary and status
+- [CONTRIBUTING.md] — Updated contribution guidelines for new unified workflows and PR standards
+- [meta/persona.json] — Shared system persona and branding
+- [meta/context.md] — Current global state, plugin list, agent log
+- [agents/agent_registry.json] — Auto-discovered, validated agent/plugin manifest
+- [docs/index.html] — TUI/BBS-inspired web UI (matches CLI look/feel)
+- [promptbooks/] — User- and agent-editable automation/workflow libraries
+- [plugins/] — Drop-in modules for advanced business, analytics, and commerce functions
 
-## Mission Monitor
-- Run `python agents/mission_monitor.py` to monitor and log agent status, trigger webhooks, or debug.
+## System Meta-Rules
 
-## Webhooks/Debug
-- Use dashboard buttons to enable/disable debug output and webhook mode.
-- Set `WEBHOOK_URL` env var for outgoing events.
+- All interfaces, agents, and plugins must load persona/context and enforce security/autoscaling/budget
+- All documentation is audit-ready and kept in sync with the mainline codebase and feature set
 
-## Optionability & Fun
-- Every feature has an on/off toggle. Everything can be mixed: CLI, voice, VR, web, mobile.
-- Designed so ANYONE can create, remix, and play.
+## Change Log
 
+- See [CHANGELOG.md] for summary of all major integrations, merges, and clean-up operations (v2.0.0-unified).
 
-## Vision Agents (Camera & Scene)
-
-- **Capture with device camera:** `python agents/vision_agent.py`
-- **Capture Unity VR scene:** Add VisionCapture.cs to any camera, press [C] in Play mode to save screenshot.
-- **Access vision images in dashboard:** Use the Vision section (or /api/vision).
-- **Use for AI/automation:** Process, share, or use captured images as agent context for creative, AR, or workflow triggers.
-
-
-## Local-Only Auth for Testing
-- Uses SQLite and FastAPI-Users. No cloud DB or paid infra. Not for prod use.
-
-## Local-Only Auth for Testing
-- Uses SQLite and FastAPI-Users. No cloud DB or paid infra. Not for prod use.
-
-## Cloud Cost Monitor
-- Run: python agents/cost_monitor.py
-- Alerts if any AWS RDS/EC2 is active. Extend for S3, Lambda, GCP, Azure, etc.
+## Multilingual/Investor-Ready
+- All platforms, agents, and docs now auto-detect user language, failover to English, and log preferences to user_profile. Investor dashboard and market analytics auto-generated on docs/index.html and investor.md.

@@ -1,190 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="manifest" href="manifest.json">
-<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js");}</script>
-  <meta charset="UTF-8">
-  <title>Artemis CodexOps – MissionOps for Everyone</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Montserrat:wght@500;800&display=swap" rel="stylesheet">
-  <style>
-    body {
-      min-height: 100vh;
-      margin: 0;
-      background: radial-gradient(circle at 70% 20%, #26334c 0%, #171b2b 100%);
-      color: #e9eef6;
-      font-family: 'Montserrat', Arial, sans-serif;
-      display: flex; flex-direction: column;
-    }
-    .container {
-      max-width: 780px;
-      margin: 4vh auto 0 auto;
-      background: rgba(28,32,58,0.92);
-      border-radius: 24px;
-      box-shadow: 0 6px 32px #04102660, 0 1.5px 8px #192c4a70;
-      padding: 2.8rem 1.5rem 2.2rem 1.5rem;
-      display: flex; flex-direction: column;
-      gap: 2.2rem;
-    }
-    h1 {
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 700;
-      color: #5fffd3;
-      font-size: 2.5rem;
-      letter-spacing: 1px;
-      text-align: center;
-      margin: 0 0 0.5em 0;
-      text-shadow: 0 2px 18px #1aab9955;
-    }
-    .status-block {
-      background: rgba(34, 52, 76, 0.96);
-      border-radius: 18px;
-      padding: 1.1em 1em;
-      margin: 0.8em 0 1.8em 0;
-      box-shadow: 0 1.5px 9px #6fffb255;
-      display: flex; flex-direction: column; gap: 0.8em;
-    }
-    .status-block h2 {
-      margin: 0; font-size: 1.18rem; color: #7efdbe;
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 600;
-      letter-spacing: 1.2px;
-    }
-    .status-block pre {
-      background: #15192c;
-      color: #fffde4;
-      border-radius: 9px;
-      font-size: 1.09em;
-      font-family: 'JetBrains Mono', monospace;
-      margin: 0.1em 0 0 0;
-      padding: 0.85em;
-      overflow-x: auto;
-      font-weight: 500;
-      text-shadow: 0 1px 0 #21243a55;
-    }
-    .card {
-      background: #222846e6;
-      border-radius: 14px;
-      box-shadow: 0 2px 16px #23fdd722;
-      padding: 1.2em 1em 1.1em 1em;
-      margin-bottom: 0.6em;
-      transition: box-shadow 0.2s;
-      position: relative;
-    }
-    .card h2 {
-      color: #ffd75a;
-      font-size: 1.18rem;
-      font-weight: 700;
-      margin: 0 0 0.45em 0;
-      letter-spacing: 1px;
-    }
-    .card p {
-      font-size: 1.08em;
-      color: #e9eef6;
-      margin: 0 0 0.35em 0;
-    }
-    .actions {
-      margin-top: 0.7em;
-    }
-    .actions a {
-      display: inline-block; margin: 0.5em 0.6em 0 0; color: #58fff1;
-      text-decoration: none; font-weight: 700; padding: 0.36em 1.1em;
-      border-radius: 7px; background: #173047f6; border: 1.2px solid #24c3d4;
-      transition: background 0.18s, color 0.2s;
-      font-size: 1em;
-      box-shadow: 0 0.5px 2px #58fff144;
-    }
-    .actions a:hover { background: #27fdd6; color: #1b2132; border-color: #14a39d; }
-    pre.code-block {
-      background: #171b2b;
-      color: #97e8ff;
-      font-family: 'JetBrains Mono', monospace;
-      padding: 0.8em;
-      border-radius: 9px;
-      font-size: 1em;
-      margin-top: 0.7em;
-      overflow-x: auto;
-      word-break: break-all;
-      box-shadow: 0 0.5px 8px #16e1c922;
-    }
-    .footer {
-      text-align: center; margin: 2.7em 0 0.7em 0; color: #7fffd4bb; font-size: 1.09em;
-    }
-    @media (max-width: 700px) {
-      .container { padding: 1.3rem 0.2rem;}
-      h1 { font-size: 2rem;}
-      .card, .status-block { padding: 1em 0.4em;}
-    }
-  </style>
+  <meta charset="UTF-8"><title>Artemis CodexOps</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-    async function fetchArtemis() {
-      try {
-        const r = await fetch('https://artemis-codexops.fly.dev/api/artemis');
-        const data = await r.json();
-        document.getElementById('mission-status').textContent = JSON.stringify(data, null, 2);
-      } catch {
-        document.getElementById('mission-status').textContent = "Offline: Demo data\n{\n  \"status\": \"Artemis II Scheduled, Artemis I Complete\"\n}";
-      }
+    async function loadLang(lang) {
+      const res = await fetch('../lang/resource_' + lang + '.json'); window.LANG = await res.json();
+      document.getElementById('greeting').textContent = LANG.greeting;
+      document.getElementById('select_agent').textContent = LANG.select_agent;
+      document.getElementById('market_label').textContent = LANG.market;
     }
-    window.onload = fetchArtemis;
+    window.onload = () => {
+      const userLang = navigator.language.split('-')[0] || 'en'; loadLang(userLang);
+      new Chart(document.getElementById('marketChart'), {type: 'bar',data: {labels: ['US','CN','IN','EU'], datasets:[{label: 'AI Market ($B)', data: [95,88,43,39]}]},options:{}});
+    };
   </script>
 </head>
-<body>
-<div style="position:fixed;top:8px;right:8px;z-index:999;color:#ffe066;font-weight:700;background:#222;padding:0.4em 1em;border-radius:10px;">🏆 Achievements: Coming Soon</div>
-<button onclick="toggleDebug()">Toggle Debug</button><button onclick="toggleWebhook()">Toggle Webhook</button><script>function toggleDebug(){fetch("/api/toggle_debug")};function toggleWebhook(){fetch("/api/toggle_webhook")};</script>
-  <div class="container">
-    <h1>Artemis CodexOps</h1>
-    <div class="status-block">
-      <h2>🚀 Live Artemis Mission Status</h2>
-      <pre id="mission-status">Loading...</pre>
-    </div>
-    <div class="card">
-      <h2>About</h2>
-      <p><b>Artemis CodexOps</b> is the open, extensible, automation-ready platform for real-time mission ops, dashboards, and agent workflows. Deploy live, fork for any mission, and collaborate instantly—on cloud, desktop, or mobile.</p>
-      <div class="actions">
-        <a href="https://github.com/jetstreamin/artemis-codexops" target="_blank">View on GitHub</a>
-        <a href="https://artemis-codexops.fly.dev/web/" target="_blank">Live Demo</a>
-        <a href="https://heroku.com/deploy?template=https://github.com/jetstreamin/artemis-codexops" target="_blank">Deploy to Heroku</a>
-      </div>
-    </div>
-    <div class="card">
-      <h2>How to Run</h2>
-      <pre class="code-block">
-git clone https://github.com/jetstreamin/artemis-codexops.git
-cd artemis-codexops
-pip install -r requirements.txt
-uvicorn cloudapi:app --host 0.0.0.0 --port 8080
-# Open: http://localhost:8080/web/
-      </pre>
-      <p style="margin-top:0.7em">Or deploy instantly to <b>Fly.io</b> or <b>Heroku</b> for your own cloud dashboard.</p>
-    </div>
-    <div class="card">
-      <h2>Join the Mission</h2>
-      <p>
-        Fork and contribute agents, plugins, or dashboards.<br>
-        <a href="https://github.com/jetstreamin/artemis-codexops/pulls" target="_blank">Open a Pull Request</a> &middot;
-        <a href="https://github.com/jetstreamin/artemis-codexops/issues" target="_blank">File an Issue</a>
-      </p>
-    </div>
-    <div class="footer">
-      Built by <b>Jetstreamin</b>. <br>
-      <span style="color:#38ffb0;">Open Automation for Space &amp; Beyond.</span>
-    </div>
-  </div>
-  <div class="card">
-  <h2>Vision Agent</h2>
-  <div id="vision-photos"></div>
-  <button onclick="fetchVision()">Refresh Vision</button>
-  <script>
-  function fetchVision() {
-    fetch("/api/vision").then(x=>x.json()).then(d=>{
-      let v = d.images.map(f=>`<a href="${f}" target="_blank"><img src="${f}" height="64"></a>`).join("");
-      document.getElementById("vision-photos").innerHTML = v;
-    });
-  }
-  </script>
-  </div>
-
+<body style="background:#0a1832;color:#36f0e0;font-family:monospace;">
+  <h1 id="greeting"></h1>
+  <div id="select_agent"></div>
+  <canvas id="marketChart" width="400" height="180"></canvas>
+  <div id="market_label"></div>
+  <div><b>Investor Prospectus:</b> <a href="investor.md">Investor Details</a></div>
+  <div><b>User Profile:</b> <a href="../user_profile/profile_schema.json">Profile Template</a></div>
 </body>
 </html>
-<a href="ar.html" style="margin-left:1em;font-weight:700;color:#7fffd4;">AR Mode</a>
