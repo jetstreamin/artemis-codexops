@@ -47,3 +47,6 @@ Persona, branding, and security context are loaded system-wide.
 
 ## Multilingual/Investor-Ready
 - All platforms, agents, and docs now auto-detect user language, failover to English, and log preferences to user_profile. Investor dashboard and market analytics auto-generated on docs/index.html and investor.md.
+
+## Multilingual, Dashboard, Investor
+All platforms, agents, docs, and dashboards are now multilingual, user-profile/cloud-aware, and investor/market interactive.

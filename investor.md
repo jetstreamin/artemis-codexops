@@ -1,17 +1,14 @@
-# Artemis CodexOps Investor Prospectus
+# Artemis CodexOps — Investor Prospectus
 
 ## Executive Summary
-Artemis CodexOps is a unified, serverless, multilingual AI orchestration platform with built-in marketing automation, compliance, and investor analytics.
+Fully serverless, multilingual AI agent orchestration with compliance and investor dashboarding.
 
-## Market Opportunity
-- Global AI market growth (Chart.js live dashboard embedded)
-- Competitive advantage: self-healing, plug-in meta-agent, auto multilingual, and onboarding
+## Market and Opportunity
+- Real-time charts embedded on GitHub Pages (see docs/index.html)
+- $150/mo AWS autoscale
+- Self-healing, global-ready, enterprise-secure
 
 ## Use Cases
-- Enterprise automation, secure comms, global SaaS, edge intelligence, investor dashboarding
-
-## Financial/Technical Highlights
-- $150/mo AWS autoscale launch
-- Global, multi-tenant, ready for enterprise or public cloud
+- Enterprise, edge, SaaS, automation, analytics
 
 ## Contact/Team/Next Steps

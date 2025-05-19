@@ -1,27 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"><title>Artemis CodexOps</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script>
-    async function loadLang(lang) {
-      const res = await fetch('../lang/resource_' + lang + '.json'); window.LANG = await res.json();
-      document.getElementById('greeting').textContent = LANG.greeting;
-      document.getElementById('select_agent').textContent = LANG.select_agent;
-      document.getElementById('market_label').textContent = LANG.market;
-    }
-    window.onload = () => {
-      const userLang = navigator.language.split('-')[0] || 'en'; loadLang(userLang);
-      new Chart(document.getElementById('marketChart'), {type: 'bar',data: {labels: ['US','CN','IN','EU'], datasets:[{label: 'AI Market ($B)', data: [95,88,43,39]}]},options:{}});
-    };
-  </script>
+<html lang="en"><head>
+<meta charset="UTF-8"><title>Artemis CodexOps Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+async function loadLang(lang) {
+  const res = await fetch('../lang/resource_' + lang + '.json'); window.LANG = await res.json();
+  document.getElementById('greeting').textContent = LANG.greeting;
+  document.getElementById('select_agent').textContent = LANG.select_agent;
+  document.getElementById('market_label').textContent = LANG.market;
+}
+window.onload = () => {
+  let userLang = navigator.language.split('-')[0] || 'en'; loadLang(userLang);
+  new Chart(document.getElementById('marketChart'), {
+    type: 'bar',
+    data: {labels: ['US','CN','IN','EU'], datasets:[{label: 'AI Market ($B)',data:[95,88,43,39]}]},
+    options: {}
+  });
+};
+</script>
 </head>
-<body style="background:#0a1832;color:#36f0e0;font-family:monospace;">
-  <h1 id="greeting"></h1>
-  <div id="select_agent"></div>
-  <canvas id="marketChart" width="400" height="180"></canvas>
-  <div id="market_label"></div>
-  <div><b>Investor Prospectus:</b> <a href="investor.md">Investor Details</a></div>
-  <div><b>User Profile:</b> <a href="../user_profile/profile_schema.json">Profile Template</a></div>
+<body style="background:#111a2f;color:#36f0e0;font-family:monospace;">
+<h1 id="greeting"></h1>
+<div id="select_agent"></div>
+<canvas id="marketChart" width="400" height="180"></canvas>
+<div id="market_label"></div>
+<div><b>Investor Prospectus:</b> <a href="../investor.md">Investor Details</a></div>
+<div><b>User Profile:</b> <a href="../user_profile/profile_schema.json">Profile Template</a></div>
 </body>
 </html>
