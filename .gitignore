@@ -27,3 +27,12 @@ project_sync_diagnostics.sh
 
 latest_artemis_api.json
 project_state.txt
+latest_artemis_api.json
+project_state.txt
+
+*.unitypackage
+.DS_Store
+.env
+*.env
+*.secret
+*.token
