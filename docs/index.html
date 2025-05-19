@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Artemis CodexOps – MissionOps for Everyone</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      background: linear-gradient(135deg, #22223b, #393e46 80%);
+      color: #e6e6fa;
+      margin: 0; padding: 0;
+    }
+    .container {
+      max-width: 900px; margin: 40px auto; padding: 2rem 1.5rem;
+      background: rgba(20, 24, 38, 0.96);
+      border-radius: 20px; box-shadow: 0 8px 32px 0 #1a1a2e44;
+    }
+    h1 {
+      font-family: 'Orbitron', monospace;
+      color: #38ffb0;
+      font-size: 2.6rem;
+      text-align: center;
+      letter-spacing: 2px;
+      margin-bottom: 0.2em;
+    }
+    h2 { color: #ffe066; margin-top: 2.2em; }
+    .status { background: #282c37; border-radius: 10px; padding: 1.2em; margin: 1.5em 0; font-size: 1.2em; }
+    pre, code { font-size: 1.05em; font-family: 'Roboto Mono', monospace; background: #21222c; color: #80ffea; padding: 0.5em; border-radius: 8px;}
+    .card {
+      background: #232946bb; border-radius: 14px; box-shadow: 0 2px 16px #38ffb033;
+      margin: 2em 0; padding: 1.5em 1.2em;
+      transition: box-shadow 0.25s;
+    }
+    .card:hover { box-shadow: 0 6px 32px #1a1a2e66; }
+    .actions a {
+      display: inline-block; margin: 0.5em 0.7em; color: #aaffec;
+      text-decoration: none; font-weight: 500; padding: 0.4em 1em;
+      border-radius: 8px; background: #192436; transition: background 0.2s;
+    }
+    .actions a:hover { background: #38ffb055; color: #21222c; }
+    .howto { color: #70a1ff; }
+    .footer { text-align: center; margin: 3em 0 1em 0; color: #bcb8d0; font-size: 1.1em;}
+    @media (max-width: 600px) {
+      .container { padding: 1rem 0.2rem;}
+      h1 { font-size: 2rem;}
+    }
+  </style>
+  <script>
+    async function fetchArtemis() {
+      try {
+        const r = await fetch('https://artemis-codexops.fly.dev/api/artemis');
+        const data = await r.json();
+        document.getElementById('mission-status').textContent = JSON.stringify(data, null, 2);
+      } catch {
+        document.getElementById('mission-status').textContent = "Offline: Demo data\n{\n  \"status\": \"Artemis II Scheduled, Artemis I Complete\"\n}";
+      }
+    }
+    window.onload = fetchArtemis;
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Artemis CodexOps</h1>
+    <div class="status">
+      <b>🚀 Live Artemis Mission Status</b>
+      <pre id="mission-status">Loading...</pre>
+    </div>
+    <div class="card">
+      <h2>About</h2>
+      <p>
+        <b>Artemis CodexOps</b> is the open, extensible, automation-ready platform for real-time mission ops, dashboards, and agent workflows. 
+        Deploy live, fork for any mission, and collaborate instantly—on cloud, desktop, or mobile.
+      </p>
+      <div class="actions">
+        <a href="https://github.com/jetstreamin/artemis-codexops" target="_blank">View on GitHub</a>
+        <a href="https://artemis-codexops.fly.dev/web/" target="_blank">Live Demo</a>
+        <a href="https://heroku.com/deploy?template=https://github.com/jetstreamin/artemis-codexops" target="_blank">Deploy to Heroku</a>
+      </div>
+    </div>
+    <div class="card">
+      <h2>How to Run</h2>
+      <pre class="howto">
+git clone https://github.com/jetstreamin/artemis-codexops.git
+cd artemis-codexops
+pip install -r requirements.txt
+uvicorn cloudapi:app --host 0.0.0.0 --port 8080
+# Open: http://localhost:8080/web/
+      </pre>
+      <p>Or deploy instantly to <b>Fly.io</b> or <b>Heroku</b> for your own cloud dashboard.</p>
+    </div>
+    <div class="card">
+      <h2>Join the Mission</h2>
+      <p>
+        Fork and contribute agents, plugins, or dashboards.<br>
+        <a href="https://github.com/jetstreamin/artemis-codexops/pulls" target="_blank">Open a Pull Request</a> &middot; 
+        <a href="https://github.com/jetstreamin/artemis-codexops/issues" target="_blank">File an Issue</a>
+      </p>
+    </div>
+    <div class="footer">
+      Built with ❤️ by Jetstreamin.<br>
+      <span style="color:#38ffb0;">Open Automation for Space & Beyond.</span>
+    </div>
+  </div>
+</body>
+</html>
