@@ -17,3 +17,6 @@ id_ed25519.*
 .git-credentials
 __pycache__/
 .DS_Store
+diagnostics_report.txt
+logs/
+project_sync_diagnostics.sh
