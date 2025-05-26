@@ -1,5 +1,42 @@
+#!/usr/bin/env python3
+"""
+Agent Logger for Artemis CodexOps
 
-def agent_self_post(name, status="online", version="1.0", endpoint="http://localhost:8080/api/agent_post"):
+Provides functions to post agent status to a central endpoint and log agent status locally.
+"""
+
+import os
+import sys
+import json
+import time
+import socket
+import requests
+import logging
+from typing import Optional
+
+# Setup logging
+os.makedirs("logs", exist_ok=True)
+logging.basicConfig(
+    filename="logs/agent_logger.log",
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(message)s"
+)
+
+def agent_self_post(
+    name: str,
+    status: str = "online",
+    version: str = "1.0",
+    endpoint: str = "http://localhost:8080/api/agent_post"
+) -> None:
+    """
+    Post agent status to a central endpoint.
+
+    Args:
+        name: Name of the agent.
+        status: Current status of the agent.
+        version: Agent version.
+        endpoint: Endpoint to post status to.
+    """
     data = {
         "agent_name": name,
         "status": status,
@@ -10,29 +47,30 @@ def agent_self_post(name, status="online", version="1.0", endpoint="http://local
     }
     try:
         requests.post(endpoint, json=data, timeout=2)
-        print(f"[SELF-POST] {name} posted status to {endpoint}")
+        logging.info(f"[SELF-POST] {name} posted status to {endpoint}")
     except Exception as e:
-        print(f"[SELF-POST] Failed to post agent status: {e}")
-    try:
-        requests.post(endpoint, json=data, timeout=2)
-        print(f"[SELF-POST] {name} posted status to {endpoint}")
-    except Exception as e:
-        print(f"[SELF-POST] Failed to post agent status: {e}")
+        logging.error(f"[SELF-POST] Failed to post agent status: {e}")
 
+def log_status(agent: str, status: str, extra: Optional[str] = None) -> None:
+    """
+    Log agent status to local files.
 
-import os
-os.makedirs("logs", exist_ok=True)
-#!/usr/bin/env python3
-import json, time, os, sys
-
-def log_status(agent, status, extra=None):
+    Args:
+        agent: Name of the agent.
+        status: Status message.
+        extra: Optional extra information.
+    """
     now = time.strftime('%Y-%m-%d %H:%M:%S')
     payload = {"agent": agent, "status": status, "timestamp": now}
-    if extra: payload["extra"] = extra
+    if extra:
+        payload["extra"] = extra
     # Write current status
-    with open("logs/agent_status.json", "w") as f: json.dump(payload, f, indent=2)
+    with open("logs/agent_status.json", "w") as f:
+        json.dump(payload, f, indent=2)
     # Append to rolling log
-    with open("logs/agent.log", "a") as f: f.write(json.dumps(payload) + "\n")
+    with open("logs/agent.log", "a") as f:
+        f.write(json.dumps(payload) + "\n")
+    logging.info(f"Logged status for agent '{agent}': {status}")
 
 if __name__ == "__main__":
     # CLI: agent_logger.py <agent_name> <status> [extra]
