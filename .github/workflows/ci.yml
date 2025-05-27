@@ -1,13 +1,71 @@
-name: Artemis CodexOps CI
-on: [push, pull_request]
+name: CI/CD Full Spectrum
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
 jobs:
-  test:
+  test-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Install Python
-        run: sudo apt-get update && sudo apt-get install -y python3 python3-pip
-      - name: Install requirements
-        run: pip3 install requests
-      - name: Run agent self-test
-        run: python3 cli/self_test.py
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Playwright dependencies
+        run: |
+          cd artemis-codexops/web
+          npm ci
+          npx playwright install --with-deps
+
+      - name: Run Playwright UI tests
+        run: |
+          cd artemis-codexops/web
+          npm test
+        continue-on-error: false
+
+      - name: Upload Playwright report
+        uses: actions/upload-artifact@v3
+        with:
+          name: playwright-report
+          path: artemis-codexops/web/playwright-report/
+
+      - name: Install pexpect for TUI tests
+        run: pip install pexpect
+
+      - name: Run TUI tests
+        run: python artemis-codexops/cli/test_tui.py
+
+      - name: Upload TUI test logs
+        uses: actions/upload-artifact@v3
+        with:
+          name: tui-test-logs
+          path: artemis-codexops/cli/
+
+      - name: Deploy to GitHub Pages
+        if: success()
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: artemis-codexops/web
+
+      - name: Deploy CloudFormation
+        if: success()
+        run: |
+          aws cloudformation deploy --template-file artemis-codexops/cloudformation-template.yaml --stack-name artemis-codexops-stack --capabilities CAPABILITY_NAMED_IAM
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "Build or test failed! Please check the logs and artifacts."
