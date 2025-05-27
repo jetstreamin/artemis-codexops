@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Artemis CodexOps Mesh Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #181c24; color: #f3f3f3; margin: 0; }
+    .container { max-width: 900px; margin: 2rem auto; background: #232946; border-radius: 10px; box-shadow: 0 2px 8px #0002; padding: 2rem; }
+    h1 { color: #ffd803; }
+    .section { margin-bottom: 2rem; }
+    .section h2 { color: #eebbc3; }
+    .log, .suggestions, .usage, .issues { background: #121629; border-radius: 6px; padding: 1rem; margin-top: 1rem; }
+    .feedback-form { margin-top: 2rem; }
+    .feedback-form textarea { width: 100%; height: 80px; border-radius: 4px; border: none; padding: 0.5rem; }
+    .feedback-form button { margin-top: 0.5rem; padding: 0.7rem 1.5rem; border-radius: 4px; border: none; background: #eebbc3; color: #232946; font-weight: bold; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Mesh Dashboard: Agent Status & Innovation</h1>
+    <div class="section">
+      <h2>Agent Status</h2>
+      <div class="log" id="agentStatus">Loading agent status...</div>
+    </div>
+    <div class="section">
+      <h2>Improvement Suggestions</h2>
+      <div class="suggestions" id="suggestions">Loading suggestions...</div>
+    </div>
+    <div class="section">
+      <h2>Usage Analytics</h2>
+      <div class="usage" id="usage">Loading usage analytics...</div>
+    </div>
+    <div class="section">
+      <h2>Open Issues & Feedback</h2>
+      <div class="issues" id="issues">Loading issues...</div>
+    </div>
+    <div class="section">
+      <h2>Submit Feedback / Feature Request</h2>
+      <form class="feedback-form" id="feedbackForm">
+        <textarea id="feedbackText" placeholder="Describe your idea, feedback, or use case..."></textarea>
+        <button type="submit">Submit Feedback</button>
+      </form>
+      <div id="feedbackResult"></div>
+    </div>
+  </div>
+  <script>
+    // Real-time WebSocket updates
+    function connectWebSocket() {
+      try {
+        const ws = new WebSocket('ws://localhost:10010/ws/dashboard');
+        ws.onmessage = function(event) {
+          const data = JSON.parse(event.data);
+          document.getElementById('agentStatus').textContent = data.status.log || data.status.status;
+          document.getElementById('suggestions').textContent = data.suggestions.suggestions;
+          document.getElementById('usage').textContent = data.usage.usage;
+        };
+        ws.onclose = function() {
+          setTimeout(connectWebSocket, 3000); // Reconnect on disconnect
+        };
+      } catch (e) {
+        document.getElementById('agentStatus').textContent = "WebSocket error.";
+        document.getElementById('suggestions').textContent = "WebSocket error.";
+        document.getElementById('usage').textContent = "WebSocket error.";
+      }
+    }
+    connectWebSocket();
+
+    // Fetch open GitHub issues
+    async function fetchIssues() {
+      try {
+        const resp = await fetch('https://api.github.com/repos/jetstreamin/artemis-codexops/issues?state=open&labels=feedback,auto-generated');
+        const issues = await resp.json();
+        if (Array.isArray(issues)) {
+          document.getElementById('issues').innerHTML = issues.map(issue =>
+            `<div>
+              <a href="${issue.html_url}" target="_blank" style="color:#ffd803;font-weight:bold;">#${issue.number}: ${issue.title}</a>
+              <div style="font-size:0.95rem;color:#b8c1ec;">${issue.state} | ${issue.created_at}</div>
+              <div style="margin-top:0.3rem;">${issue.body}</div>
+            </div>`
+          ).join('<hr style="border:1px solid #232946;">');
+        } else {
+          document.getElementById('issues').textContent = "No issues found.";
+        }
+      } catch {
+        document.getElementById('issues').textContent = "Error loading issues.";
+      }
+    }
+    fetchIssues();
+
+    // Feedback form handler: send to dashboard API
+    document.getElementById('feedbackForm').onsubmit = async function(e) {
+      e.preventDefault();
+      const text = document.getElementById('feedbackText').value;
+      try {
+        const resp = await fetch('http://localhost:10010/feedback', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ feedback: text })
+        });
+        if (resp.ok) {
+          document.getElementById('feedbackResult').textContent = "Thank you for your feedback!";
+          fetchIssues(); // Refresh issues after feedback
+        } else {
+          document.getElementById('feedbackResult').textContent = "Error submitting feedback.";
+        }
+      } catch {
+        document.getElementById('feedbackResult').textContent = "Error submitting feedback.";
+      }
+      document.getElementById('feedbackText').value = "";
+    };
+  </script>
+</body>
+</html>

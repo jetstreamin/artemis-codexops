@@ -1,6 +1,6 @@
 # Artemis CodexOps: Parallel Local Watcher & Visual Test Runner (PowerShell)
 
-$watchPath = "artemis-codexops"
+$watchPath = "."
 $logPath = "artemis-codexops/cli/watch_and_test.log"
 $scriptToRun = "artemis-codexops/cli/auto_visual_test.ps1"
 $services = @(

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Artemis CodexOps BBS Login (Red Dragon/Acidware Style)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      background: #181c24;
+      color: #00ff00;
+      font-family: 'Consolas', 'Courier New', monospace;
+      margin: 0;
+      padding: 0;
+    }
+    .bbs-container {
+      max-width: 480px;
+      margin: 4rem auto;
+      background: #232946;
+      border: 4px double #ffd803;
+      border-radius: 12px;
+      box-shadow: 0 0 24px #000a;
+      padding: 2rem;
+      text-align: center;
+    }
+    h1 {
+      color: #ffd803;
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      font-family: 'Consolas', 'Courier New', monospace;
+      letter-spacing: 2px;
+    }
+    .bbs-art {
+      font-family: 'Consolas', 'Courier New', monospace;
+      color: #00ff00;
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      white-space: pre;
+    }
+    label, input {
+      display: block;
+      margin: 0.7rem auto;
+      font-size: 1.1rem;
+      width: 80%;
+      background: #121629;
+      color: #ffd803;
+      border: 1px solid #ffd803;
+      border-radius: 4px;
+      padding: 0.5rem;
+    }
+    button {
+      background: #ffd803;
+      color: #232946;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      padding: 0.7rem 2rem;
+      font-size: 1.1rem;
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+    .bbs-footer {
+      margin-top: 2rem;
+      color: #b8c1ec;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="bbs-container">
+    <h1>FROZEN CREW BBS</h1>
+    <div class="bbs-art">
+      {::}  [*]  RED DRAGON  [*]  {::}
+      <br>
+      |  Welcome to the Artemis Mesh  |
+      <br>
+      {::}  [*]  ACIDWARE  [*]  {::}
+    </div>
+    <form id="loginForm">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" required placeholder="user@email.com" />
+      <label for="password">Password</label>
+      <input type="password" id="password" required placeholder="********" />
+      <button type="submit">Login / Register</button>
+    </form>
+    <div id="loginResult"></div>
+    <div class="bbs-footer">
+      &copy; 2025 Frozen Crew | Artemis CodexOps | Acidware BBS
+    </div>
+  </div>
+  <script>
+    // Placeholder: Integrate with AWS Cognito Hosted UI or API
+    document.getElementById('loginForm').onsubmit = async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      document.getElementById('loginResult').textContent = "Authenticating with Cognito (placeholder)...";
+      // TODO: Integrate with Cognito Hosted UI or API
+      setTimeout(() => {
+        document.getElementById('loginResult').textContent = "Login successful! (demo)";
+        window.location.href = "index.html";
+      }, 1200);
+    };
+  </script>
+</body>
+</html>
