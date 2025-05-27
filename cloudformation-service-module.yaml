@@ -1,0 +1,80 @@
+# NOTE: This file uses AWS CloudFormation intrinsic functions (!Ref, !GetAtt, !ImportValue, etc.)
+# These are valid for AWS CloudFormation but will show errors in local YAML linters/editors.
+# You can safely ignore "Unresolved tag" errors in VSCode or other editors.
+
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Artemis CodexOps Modular Service (ECS Fargate, RDS, S3)
+
+Parameters:
+  ServiceName:
+    Type: String
+    Description: Name of the ECS service (e.g., plugin-marketplace)
+  ContainerImage:
+    Type: String
+    Description: Docker image URI (ECR or public)
+  ContainerPort:
+    Type: Number
+    Default: 8080
+    Description: Port the container listens on
+  DatabaseUrl:
+    Type: String
+    Description: Postgres connection string
+  S3Bucket:
+    Type: String
+    Description: S3 bucket name for assets
+
+Resources:
+  CodexOpsTaskDef:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Family: !Ref ServiceName
+      Cpu: '256'
+      Memory: '512'
+      NetworkMode: awsvpc
+      RequiresCompatibilities: [FARGATE]
+      ExecutionRoleArn: !GetAtt CodexOpsTaskRole.Arn
+      ContainerDefinitions:
+        - Name: !Ref ServiceName
+          Image: !Ref ContainerImage
+          PortMappings:
+            - ContainerPort: !Ref ContainerPort
+          Environment:
+            - Name: DATABASE_URL
+              Value: !Ref DatabaseUrl
+            - Name: S3_BUCKET
+              Value: !Ref S3Bucket
+
+  CodexOpsService:
+    Type: AWS::ECS::Service
+    Properties:
+      Cluster: !ImportValue CodexOpsCluster
+      TaskDefinition: !Ref CodexOpsTaskDef
+      DesiredCount: 1
+      LaunchType: FARGATE
+      NetworkConfiguration:
+        AwsvpcConfiguration:
+          AssignPublicIp: ENABLED
+          Subnets: !ImportValue CodexOpsSubnet
+          SecurityGroups: !ImportValue CodexOpsSG
+
+  CodexOpsTaskRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ecs-tasks.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy
+        - arn:aws:iam::aws:policy/AmazonS3FullAccess
+        - arn:aws:iam::aws:policy/AmazonRDSFullAccess
+
+Outputs:
+  ServiceName:
+    Value: !Ref ServiceName
+  ServiceURL:
+    Description: "Service Public URL (via ALB, if configured)"
+    Value: !Ref CodexOpsService

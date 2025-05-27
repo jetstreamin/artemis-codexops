@@ -2,6 +2,13 @@
 
 ## 🚀 Frictionless Onboarding
 
+### VR/WebXR & Airsupport Deployment
+
+- The dashboard supports both standard web and VR/WebXR modes.
+- Use the "Switch to VR Mode" button (top right) to enter immersive VR mode (WebXR, Quest browser, etc.).
+- Use the "Switch to Web Mode" button in VR to return to the standard dashboard.
+- No install required: works instantly on GitHub Pages, Quest browser, and any WebXR-compatible device.
+
 ### One-Click Deploy
 
 - **Deploy to AWS (ECS/Fargate Free Tier):**

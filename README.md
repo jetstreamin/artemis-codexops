@@ -21,9 +21,54 @@ Persona, branding, and security context are loaded system-wide.
 - **Budgeted autoscaling:** AWS/Lambda/S3/CloudFront optimized for $150/mo, hard limits enabled
 - **Business modules:** Merch shop, domain brokerage, analytics, and extensible marketplace
 
+## Quick Start: One-Command AWS Deployment
+
+1. **Clone the repo and configure AWS CLI with your credentials.**
+2. **Run:**
+   ```
+   make deploy-all
+   ```
+   This will:
+   - Deploy the root infrastructure stack (VPC, RDS, S3, ECS, ALB)
+   - Build and push Docker images for all services
+   - Deploy each microservice using the modular service template and CLI script
+
+3. **Monitor the AWS CloudFormation and ECS dashboards for stack and service status.**
+4. **Run:**
+   ```
+   make validate
+   ```
+   to check all endpoints and health.
+
+5. **To clean up all resources:**
+   ```
+   make clean
+   ```
+
+---
+
 ## Deployment
 
 - See [deployment.md](deployment.md) for CI/CD, AWS, and auto-healing setup.
+- [Deploy to Render.com (Best Free Choice)](docs/deploy_render.md)
+
+### Internal AWS "Render.com" for Artemis CodexOps
+
+- **Step 1:** Deploy the root infrastructure stack:
+  ```
+  aws cloudformation deploy --template-file artemis-codexops/cloudformation-root-infra.yaml --stack-name codexops-root --capabilities CAPABILITY_NAMED_IAM
+  ```
+- **Step 2:** Use `cloudformation-service-module.yaml` for modular, multi-service deployment.
+- **Step 3:** Use `cli/deploy_service.sh` to spin up new FastAPI microservices:
+  ```
+  bash cli/deploy_service.sh <service-name> <container-image> <container-port> <database-url> <s3-bucket>
+  ```
+  Example:
+  ```
+  bash cli/deploy_service.sh plugin-marketplace 123456789012.dkr.ecr.us-east-1.amazonaws.com/plugin-marketplace:latest 8080 postgresql://user:pass@host:5432/db codexops-assets-123456789012
+  ```
+- Each service gets its own ECS Fargate task, RDS/Postgres, and S3 integration.
+- All resources are managed, monitored, and auto-scaled under your AWS account.
 
 ## Documentation Structure
 

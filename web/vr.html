@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Artemis CodexOps VR Console (WebXR)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <style>
+      #toggleMode {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 10;
+        background: #ffd803;
+        color: #232946;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        padding: 0.7rem 1.5rem;
+        cursor: pointer;
+        font-size: 1.1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="toggleMode" onclick="window.location.href='index.html'">Switch to Web Mode</button>
+    <a-scene>
+      <a-assets>
+        <!-- Add assets here if needed -->
+      </a-assets>
+      <a-entity position="0 1.6 -2">
+        <a-box color="#4CC3D9" depth="0.5" height="0.5" width="2"></a-box>
+        <a-text value="Artemis CodexOps VR Console" color="#FFD803" width="3" position="-0.9 0.4 0.26"></a-text>
+        <a-text value="Clipboard, Chat, Mesh events will appear here." color="#FFF" width="2.5" position="-0.9 0.2 0.26"></a-text>
+      </a-entity>
+      <a-entity camera look-controls wasd-controls></a-entity>
+      <a-sky color="#181c24"></a-sky>
+    </a-scene>
+  </body>
+</html>
