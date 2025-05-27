@@ -1,5 +1,23 @@
 # Artemis CodexOps Web Dashboard
 
+## 🚀 Frictionless Onboarding
+
+### One-Click Deploy
+
+- **Deploy to AWS (ECS/Fargate Free Tier):**
+  1. Fork this repo and clone it.
+  2. Update `cloudformation-template.yaml` with your AWS defaults or use the provided sample image and default VPC/subnet/security group.
+  3. Push to GitHub and let the included GitHub Actions workflow auto-deploy.
+
+- **Live Demo / Sandbox:**
+  - [Try the dashboard live on GitHub Pages](https://jetstreamin.github.io/artemis-codexops/web/index.html)
+  - No login or credit card required for demo.
+
+- **Interactive Tutorial:**
+  - Coming soon: In-app onboarding and sample data for new users.
+
+---
+
 ## Automated UI Testing
 
 This project uses [Playwright](https://playwright.dev/) for end-to-end automated testing of the dashboard UI.

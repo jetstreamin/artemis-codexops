@@ -1,8 +1,73 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: Artemis CodexOps (MVP) – Docker/ECS Service for AWS, FedRAMP, Enterprise
+Description: Artemis CodexOps — Full Production Deployment (ECS, RDS, S3, Free Tier)
+
 Resources:
+  CodexOpsVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: CodexOpsVPC
+
+  CodexOpsSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref CodexOpsVPC
+      CidrBlock: 10.0.1.0/24
+      MapPublicIpOnLaunch: true
+      AvailabilityZone: !Select [0, !GetAZs '']
+
+  CodexOpsSG:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: CodexOps ECS Security Group
+      VpcId: !Ref CodexOpsVPC
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 0
+          ToPort: 65535
+          CidrIp: 0.0.0.0/0
+
+  CodexOpsRDS:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      DBInstanceIdentifier: codexops-db
+      AllocatedStorage: 20
+      DBInstanceClass: db.t3.micro
+      Engine: postgres
+      MasterUsername: codexopsadmin
+      MasterUserPassword: codexopspassword
+      VPCSecurityGroups: [!Ref CodexOpsSG]
+      DBName: codexops
+      PubliclyAccessible: true
+      StorageType: gp2
+
+  CodexOpsS3:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub codexops-assets-${AWS::AccountId}
+
   CodexOpsCluster:
     Type: AWS::ECS::Cluster
+
+  CodexOpsTaskRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ecs-tasks.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy
+        - arn:aws:iam::aws:policy/AmazonS3FullAccess
+        - arn:aws:iam::aws:policy/AmazonRDSFullAccess
+
   CodexOpsTaskDef:
     Type: AWS::ECS::TaskDefinition
     Properties:
@@ -11,12 +76,18 @@ Resources:
       Memory: '512'
       NetworkMode: awsvpc
       RequiresCompatibilities: [FARGATE]
-      ExecutionRoleArn: !Sub arn:aws:iam::${AWS::AccountId}:role/ecsTaskExecutionRole
+      ExecutionRoleArn: !GetAtt CodexOpsTaskRole.Arn
       ContainerDefinitions:
         - Name: codexops
-          Image: <YOUR_ECR_IMAGE>
+          Image: amazon/amazon-ecs-sample # Replace with your ECR image for production
           PortMappings:
             - ContainerPort: 8080
+          Environment:
+            - Name: DATABASE_URL
+              Value: !Sub "postgresql://codexopsadmin:codexopspassword@${CodexOpsRDS.Endpoint.Address}:5432/codexops"
+            - Name: S3_BUCKET
+              Value: !Ref CodexOpsS3
+
   CodexOpsService:
     Type: AWS::ECS::Service
     Properties:
@@ -27,5 +98,16 @@ Resources:
       NetworkConfiguration:
         AwsvpcConfiguration:
           AssignPublicIp: ENABLED
-          Subnets: [<YOUR_SUBNET_ID>]
-          SecurityGroups: [<YOUR_SECURITY_GROUP_ID>]
+          Subnets: [!Ref CodexOpsSubnet]
+          SecurityGroups: [!Ref CodexOpsSG]
+
+Outputs:
+  CodexOpsServiceURL:
+    Description: "CodexOps ECS Service Public URL"
+    Value: !GetAtt CodexOpsService.ServiceName
+  CodexOpsRDSAddress:
+    Description: "CodexOps RDS Endpoint"
+    Value: !GetAtt CodexOpsRDS.Endpoint.Address
+  CodexOpsS3Bucket:
+    Description: "CodexOps S3 Bucket"
+    Value: !Ref CodexOpsS3

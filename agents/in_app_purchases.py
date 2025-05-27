@@ -9,15 +9,32 @@ from fastapi import FastAPI, HTTPException, Request
 from pydantic import BaseModel
 from typing import Optional, List
 import uuid
+import sqlite3
 
 app = FastAPI(title="Artemis In-App Purchases")
 
-# In-memory store for demo; replace with DB in production
-PURCHASES = {}
+DB_PATH = "in_app_purchases.db"
+
 REPORTS = {
     "analytics_1": "Advanced Analytics Report 1",
     "analytics_2": "Advanced Analytics Report 2"
 }
+
+def init_db():
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    c.execute('''
+        CREATE TABLE IF NOT EXISTS purchases (
+            id TEXT PRIMARY KEY,
+            user_email TEXT,
+            report_id TEXT,
+            is_paid INTEGER
+        )
+    ''')
+    conn.commit()
+    conn.close()
+
+init_db()
 
 class Purchase(BaseModel):
     id: str
@@ -30,25 +47,47 @@ def purchase_report(user_email: str, report_id: str):
     if report_id not in REPORTS:
         raise HTTPException(status_code=404, detail="Report not found")
     purchase_id = str(uuid.uuid4())
-    purchase = Purchase(
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    c.execute('''
+        INSERT INTO purchases (id, user_email, report_id, is_paid)
+        VALUES (?, ?, ?, ?)
+    ''', (purchase_id, user_email, report_id, 1))
+    conn.commit()
+    conn.close()
+    return Purchase(
         id=purchase_id,
         user_email=user_email,
         report_id=report_id,
-        is_paid=True  # TODO: Integrate with Stripe for payment
+        is_paid=True
     )
-    PURCHASES[purchase_id] = purchase
-    return purchase
 
 @app.get("/reports/{report_id}")
 def get_report(report_id: str, user_email: str):
-    # Check if user has purchased the report
-    if not any(p.report_id == report_id and p.user_email == user_email and p.is_paid for p in PURCHASES.values()):
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    c.execute('SELECT * FROM purchases WHERE report_id=? AND user_email=? AND is_paid=1', (report_id, user_email))
+    row = c.fetchone()
+    conn.close()
+    if not row:
         raise HTTPException(status_code=403, detail="Report not purchased")
     return {"report_id": report_id, "content": REPORTS[report_id]}
 
 @app.get("/purchases/user/{user_email}", response_model=List[Purchase])
 def list_user_purchases(user_email: str):
-    return [p for p in PURCHASES.values() if p.user_email == user_email]
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    c.execute('SELECT id, user_email, report_id, is_paid FROM purchases WHERE user_email=?', (user_email,))
+    rows = c.fetchall()
+    conn.close()
+    return [
+        Purchase(
+            id=row[0],
+            user_email=row[1],
+            report_id=row[2],
+            is_paid=bool(row[3])
+        ) for row in rows
+    ]
 
 # TODO: Add more analytics/report types and dynamic pricing
 # TODO: Secure endpoints with authentication and RBAC

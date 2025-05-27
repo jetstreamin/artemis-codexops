@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Artemis CodexOps — Premium Agent Actions</title>
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #181c24; color: #f3f3f3; margin: 0; }
+    .container { max-width: 600px; margin: 2rem auto; background: #232946; border-radius: 10px; box-shadow: 0 2px 8px #0002; padding: 2rem; }
+    h1 { color: #ffd803; }
+    label { display: block; margin-top: 1rem; }
+    input, select { width: 100%; padding: 0.5rem; border-radius: 4px; border: none; margin-top: 0.5rem; }
+    button { margin-top: 1rem; padding: 0.7rem 1.5rem; border-radius: 4px; border: none; background: #eebbc3; color: #232946; font-weight: bold; cursor: pointer; }
+    .result { margin-top: 2rem; background: #121629; border-radius: 6px; padding: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Premium Agent Actions</h1>
+    <form id="action-form">
+      <label for="user_id">User ID</label>
+      <input type="text" id="user_id" required placeholder="Enter your user ID" />
+
+      <label for="action_type">Action Type</label>
+      <select id="action_type">
+        <option value="grading">Advanced Grading</option>
+        <option value="proctoring">Proctoring</option>
+        <option value="analytics">Analytics</option>
+      </select>
+
+      <label for="payload">Payload (JSON)</label>
+      <input type="text" id="payload" placeholder='{"example": "data"}' />
+
+      <button type="submit">Invoke Premium Action ($2.00)</button>
+    </form>
+    <div class="result" id="result"></div>
+  </div>
+  <script>
+    document.getElementById('action-form').onsubmit = async function(e) {
+      e.preventDefault();
+      const user_id = document.getElementById('user_id').value;
+      const action_type = document.getElementById('action_type').value;
+      let payload;
+      try {
+        payload = JSON.parse(document.getElementById('payload').value || '{}');
+      } catch {
+        document.getElementById('result').textContent = "Invalid JSON in payload.";
+        return;
+      }
+      const res = await fetch('/agents/pay_per_use.py/actions/invoke', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ user_id, action_type, payload })
+      });
+      const data = await res.json();
+      document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+    };
+  </script>
+</body>
+</html>

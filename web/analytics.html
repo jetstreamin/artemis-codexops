@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Artemis CodexOps — Premium Analytics & Reports</title>
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #181c24; color: #f3f3f3; margin: 0; }
+    .container { max-width: 600px; margin: 2rem auto; background: #232946; border-radius: 10px; box-shadow: 0 2px 8px #0002; padding: 2rem; }
+    h1 { color: #ffd803; }
+    label { display: block; margin-top: 1rem; }
+    select, input { width: 100%; padding: 0.5rem; border-radius: 4px; border: none; margin-top: 0.5rem; }
+    button { margin-top: 1rem; padding: 0.7rem 1.5rem; border-radius: 4px; border: none; background: #eebbc3; color: #232946; font-weight: bold; cursor: pointer; }
+    .result { margin-top: 2rem; background: #121629; border-radius: 6px; padding: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Premium Analytics & Reports</h1>
+    <form id="purchase-form">
+      <label for="user_email">Your Email</label>
+      <input type="email" id="user_email" required placeholder="you@example.com" />
+
+      <label for="report_id">Select Report</label>
+      <select id="report_id">
+        <option value="analytics_1">Advanced Analytics Report 1 ($5.00)</option>
+        <option value="analytics_2">Advanced Analytics Report 2 ($5.00)</option>
+      </select>
+
+      <button type="submit">Purchase Report</button>
+    </form>
+    <div class="result" id="result"></div>
+    <div class="result" id="report-content"></div>
+  </div>
+  <script>
+    document.getElementById('purchase-form').onsubmit = async function(e) {
+      e.preventDefault();
+      const user_email = document.getElementById('user_email').value;
+      const report_id = document.getElementById('report_id').value;
+      const res = await fetch('/agents/in_app_purchases.py/purchase', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ user_email, report_id })
+      });
+      const data = await res.json();
+      document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+
+      // Fetch report content if purchase is successful
+      if (data && data.is_paid) {
+        const reportRes = await fetch(`/agents/in_app_purchases.py/reports/${report_id}?user_email=${encodeURIComponent(user_email)}`);
+        const reportData = await reportRes.json();
+        document.getElementById('report-content').textContent = "Report Content:\n" + JSON.stringify(reportData, null, 2);
+      }
+    };
+  </script>
+</body>
+</html>

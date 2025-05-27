@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Artemis CodexOps — Live Events & Webinars</title>
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #181c24; color: #f3f3f3; margin: 0; }
+    .container { max-width: 700px; margin: 2rem auto; background: #232946; border-radius: 10px; box-shadow: 0 2px 8px #0002; padding: 2rem; }
+    h1 { color: #ffd803; }
+    .event { background: #121629; border-radius: 6px; padding: 1rem; margin-bottom: 1.5rem; }
+    .event-title { font-size: 1.2rem; color: #ffd803; }
+    .event-desc { margin: 0.5rem 0; }
+    .event-meta { font-size: 0.95rem; color: #b8c1ec; }
+    label { display: block; margin-top: 1rem; }
+    input { width: 100%; padding: 0.5rem; border-radius: 4px; border: none; margin-top: 0.5rem; }
+    button { margin-top: 1rem; padding: 0.7rem 1.5rem; border-radius: 4px; border: none; background: #eebbc3; color: #232946; font-weight: bold; cursor: pointer; }
+    .result { margin-top: 2rem; background: #121629; border-radius: 6px; padding: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Live Events & Webinars</h1>
+    <div id="events-list"></div>
+    <form id="ticket-form" style="display:none;">
+      <label for="user_email">Your Email</label>
+      <input type="email" id="user_email" required placeholder="you@example.com" />
+      <input type="hidden" id="event_id" />
+      <button type="submit">Purchase Ticket</button>
+    </form>
+    <div class="result" id="result"></div>
+  </div>
+  <script>
+    // Fetch and display events
+    async function loadEvents() {
+      const res = await fetch('/agents/live_events.py/events');
+      const events = await res.json();
+      const list = document.getElementById('events-list');
+      list.innerHTML = '';
+      events.forEach(ev => {
+        const div = document.createElement('div');
+        div.className = 'event';
+        div.innerHTML = `
+          <div class="event-title">${ev.title}</div>
+          <div class="event-desc">${ev.description}</div>
+          <div class="event-meta">Start: ${ev.start_time} | End: ${ev.end_time} | Price: $${ev.price_usd}</div>
+          <button onclick="buyTicket('${ev.id}')">Buy Ticket</button>
+        `;
+        list.appendChild(div);
+      });
+    }
+    window.buyTicket = function(event_id) {
+      document.getElementById('ticket-form').style.display = 'block';
+      document.getElementById('event_id').value = event_id;
+      document.getElementById('result').textContent = '';
+    };
+    document.getElementById('ticket-form').onsubmit = async function(e) {
+      e.preventDefault();
+      const event_id = document.getElementById('event_id').value;
+      const user_email = document.getElementById('user_email').value;
+      const res = await fetch('/agents/live_events.py/tickets/purchase', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ event_id, user_email })
+      });
+      const data = await res.json();
+      document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+    };
+    loadEvents();
+  </script>
+</body>
+</html>

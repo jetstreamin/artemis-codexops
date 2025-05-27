@@ -45,6 +45,31 @@ Persona, branding, and security context are loaded system-wide.
 
 - See [CHANGELOG.md] for summary of all major integrations, merges, and clean-up operations (v2.0.0-unified).
 
+---
+
+## Build Status
+
+![CI/CD](https://github.com/jetstreamin/artemis-codexops/actions/workflows/ci.yml/badge.svg)
+
+## Community & Support
+
+- [Public Roadmap](docs/roadmap.md)
+- [Plugin Marketplace](agents/plugin_marketplace.py)
+- [Leaderboard & Testimonials](docs/leaderboard.md)
+- [Public Projects Directory](docs/public_projects.md)
+- [API Reference](docs/api.md)
+- [Engagement Strategy](docs/engagement.md)
+- **Join the Community:**  
+  - Discord: [Invite Link Coming Soon]
+  - Slack: [Invite Link Coming Soon]
+- Submit feedback or feature requests via [GitHub Issues](https://github.com/jetstreamin/artemis-codexops/issues)
+
+## Automated Testing
+
+- All code is validated by automated UI, TUI, and API tests via GitHub Actions.
+- Test artifacts (screenshots, logs, reports) are published for every build.
+- See `.github/workflows/ci.yml` for details.
+
 ## Multilingual/Investor-Ready
 - All platforms, agents, and docs now auto-detect user language, failover to English, and log preferences to user_profile. Investor dashboard and market analytics auto-generated on docs/index.html and investor.md.
 

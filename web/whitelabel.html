@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Artemis CodexOps — White-Label/B2B Licensing</title>
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #181c24; color: #f3f3f3; margin: 0; }
+    .container { max-width: 600px; margin: 2rem auto; background: #232946; border-radius: 10px; box-shadow: 0 2px 8px #0002; padding: 2rem; }
+    h1 { color: #ffd803; }
+    label { display: block; margin-top: 1rem; }
+    input { width: 100%; padding: 0.5rem; border-radius: 4px; border: none; margin-top: 0.5rem; }
+    button { margin-top: 1rem; padding: 0.7rem 1.5rem; border-radius: 4px; border: none; background: #eebbc3; color: #232946; font-weight: bold; cursor: pointer; }
+    .result { margin-top: 2rem; background: #121629; border-radius: 6px; padding: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>White-Label / B2B Licensing</h1>
+    <form id="whitelabel-form">
+      <label for="company_name">Company Name</label>
+      <input type="text" id="company_name" required placeholder="Your company or institution" />
+
+      <label for="contact_email">Contact Email</label>
+      <input type="email" id="contact_email" required placeholder="contact@example.com" />
+
+      <label for="branding_url">Branding URL (optional)</label>
+      <input type="text" id="branding_url" placeholder="https://yourbrand.com/logo.png" />
+
+      <button type="submit">Request White-Label Demo</button>
+    </form>
+    <div class="result" id="result"></div>
+  </div>
+  <script>
+    document.getElementById('whitelabel-form').onsubmit = async function(e) {
+      e.preventDefault();
+      const company_name = document.getElementById('company_name').value;
+      const contact_email = document.getElementById('contact_email').value;
+      const branding_url = document.getElementById('branding_url').value;
+      const res = await fetch('/agents/white_label.py/clients/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ company_name, contact_email, branding_url })
+      });
+      const data = await res.json();
+      document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+    };
+  </script>
+</body>
+</html>
