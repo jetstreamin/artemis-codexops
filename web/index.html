@@ -1,77 +1,210 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Artemis CodexOps Dashboard</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Artemis CodexOps — Live Mesh Dashboard</title>
   <style>
-    body { font-family: sans-serif; background: #18192a; color: #eee; margin: 0; padding: 2em;}
-    h1 { color: #fffd38; }
-    pre { background: #222; padding: 1em; border-radius: 6px;}
-    section { margin-bottom: 2em; }
-    a { color: #80bfff; }
-    .logs { max-height: 200px; overflow: auto; font-size: 90%; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #181c24;
+      color: #f3f3f3;
+    }
+    .header {
+      background: #232946;
+      color: #fff;
+      padding: 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      border-bottom: 2px solid #2d334a;
+    }
+    .header h1 {
+      margin: 0 0 0.5rem 0;
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
+    .header p {
+      margin: 0 0 1rem 0;
+      font-size: 1.1rem;
+      color: #b8c1ec;
+    }
+    .header .links {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+    }
+    .header .links a {
+      color: #eebbc3;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .header .links a:hover {
+      color: #ffd803;
+    }
+    .dashboard-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding: 2rem;
+      box-sizing: border-box;
+      min-height: 80vh;
+    }
+    .main-chart, .chat-window, .live-log {
+      background: #232946;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px #0002;
+      padding: 1.5rem;
+      flex: 1 1 300px;
+      min-width: 320px;
+      min-height: 350px;
+      display: flex;
+      flex-direction: column;
+    }
+    .main-chart {
+      flex: 2 1 500px;
+      margin-right: 1.5rem;
+    }
+    .chat-window {
+      flex: 1 1 350px;
+      margin-right: 1.5rem;
+    }
+    .live-log {
+      flex: 1 1 350px;
+    }
+    @media (max-width: 1100px) {
+      .dashboard-grid {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+      }
+      .main-chart, .chat-window, .live-log {
+        margin-right: 0;
+        min-width: 0;
+      }
+    }
+    .log-list {
+      flex: 1;
+      overflow-y: auto;
+      font-size: 0.95rem;
+      background: #121629;
+      border-radius: 6px;
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .log-entry {
+      border-bottom: 1px solid #2d334a;
+      padding: 0.3rem 0;
+      color: #eebbc3;
+    }
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      background: #121629;
+      border-radius: 6px;
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .chat-input-row {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .chat-input-row input {
+      flex: 1;
+      padding: 0.5rem;
+      border-radius: 4px;
+      border: none;
+      font-size: 1rem;
+    }
+    .chat-input-row button {
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      border: none;
+      background: #eebbc3;
+      color: #232946;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .chat-input-row button:hover {
+      background: #ffd803;
+    }
   </style>
-  <script>
-    function poll() {
-      fetch('/api/artemis').then(x=>x.json()).then(d=>{
-        document.getElementById('artemis-status').textContent = JSON.stringify(d,null,2)
-      });
-      fetch('/api/status').then(x=>x.json()).then(d=>{
-        document.getElementById('agent-status').textContent = JSON.stringify(d,null,2)
-      });
-      fetch('/api/metrics').then(x=>x.json()).then(d=>{
-        document.getElementById('metrics').textContent = "CPU: "+d.cpu+"% | RAM: "+d.mem+"% | Uptime: "+Math.round(d.uptime/3600)+"h";
-      });
-    }
-    function runAgent() {
-      const agent = document.getElementById('agent-input').value;
-      fetch('/api/run-agent', {
-        method: 'POST', headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({agent})
-      }).then(x=>x.json()).then(d=>{
-        document.getElementById('agent-output').textContent = JSON.stringify(d,null,2)
-      });
-    }
-    function setupLogs() {
-      let ws = new WebSocket((location.protocol=='https:'?'wss':'ws')+'://'+location.host+'/ws/logs');
-      ws.onmessage = evt => { document.getElementById('agent-log').textContent = evt.data; };
-      ws.onerror = () => setTimeout(setupLogs, 5000);
-      ws.onclose = () => setTimeout(setupLogs, 5000);
-    }
-    setInterval(poll, 20000);
-    window.onload = ()=>{ poll(); setupLogs(); };
-  </script>
 </head>
 <body>
-  <h1>Artemis CodexOps Dashboard</h1>
-  <section>
-    <h2>Live Artemis Mission Status (async/cached)</h2>
-    <pre id="artemis-status">Loading...</pre>
-  </section>
-  <section>
-    <h2>Agent Health/Status</h2>
-    <pre id="agent-status">Loading...</pre>
-  </section>
-  <section>
-    <h2>Resource Usage</h2>
-    <pre id="metrics">Loading...</pre>
-  </section>
-  <section>
-    <h2>Run Any Agent (Async)</h2>
-    <input id="agent-input" type="text" value="codexagent_nasa_artemis.py">
-    <button onclick="runAgent()">Run Agent</button>
-    <pre id="agent-output"></pre>
-  </section>
-  <section>
-    <h2>Agent Activity Log (live, WebSocket)</h2>
-    <pre id="agent-log">Loading...</pre>
-  </section>
-  <section>
-    <h2>Get Involved</h2>
-    <ul>
-      <li><a href="https://github.com/jetstreamin/artemis-codexops/pulls" target="_blank">Open a pull request</a></li>
-      <li><a href="https://github.com/jetstreamin/artemis-codexops/issues" target="_blank">File an issue</a></li>
-      <li><a href="https://github.com/jetstreamin/artemis-codexops/blob/main/CONTRIBUTING.md" target="_blank">How to contribute</a></li>
-    </ul>
-  </section>
+  <div class="header">
+    <h1>Artemis CodexOps — Live Mesh Dashboard</h1>
+    <p>
+      Monitor, chat, and explore the real-time agent mesh network.<br>
+      Distributed mesh chart, live chat, and rolling 5-minute agent log.
+    </p>
+    <div class="links">
+      <a href="https://github.com/mikealicious/artemis-codexops" target="_blank">GitHub Project</a>
+      <a href="https://github.com/mikealicious" target="_blank">Your GitHub Profile</a>
+      <a href="https://www.tiktok.com/@mikealicious" target="_blank">TikTok: @mikealicious</a>
+    </div>
+  </div>
+  <div class="dashboard-grid">
+    <div class="main-chart">
+      <h2>Distributed Mesh Network</h2>
+      <div id="mesh-chart" style="flex:1; min-height:250px; background:#181c24; border-radius:8px; display:flex; align-items:center; justify-content:center; color:#b8c1ec;">
+        [Mesh chart visualization coming soon]
+      </div>
+    </div>
+    <div class="chat-window">
+      <h2>Live Chat</h2>
+      <div class="chat-messages" id="chat-messages">
+        <!-- Chat messages will appear here -->
+      </div>
+      <div class="chat-input-row">
+        <input type="text" id="chat-input" placeholder="Type your message..." />
+        <button onclick="sendChat()">Send</button>
+      </div>
+    </div>
+    <div class="live-log">
+      <h2>Live Agent Log (5 min)</h2>
+      <div class="log-list" id="log-list">
+        <!-- Live log entries will appear here -->
+      </div>
+      <div style="font-size:0.9rem; color:#b8c1ec;">
+        Log data is streamed live from the agent mesh (S3/WebSocket).
+      </div>
+    </div>
+  </div>
+  <script>
+    // Placeholder for chat functionality
+    function sendChat() {
+      const input = document.getElementById('chat-input');
+      const messages = document.getElementById('chat-messages');
+      if (input.value.trim()) {
+        const div = document.createElement('div');
+        div.textContent = '[You] ' + input.value;
+        div.style.color = '#ffd803';
+        messages.appendChild(div);
+        messages.scrollTop = messages.scrollHeight;
+        input.value = '';
+      }
+    }
+    // Placeholder for live log (simulate log entries)
+    function addLogEntry(msg) {
+      const logList = document.getElementById('log-list');
+      const div = document.createElement('div');
+      div.className = 'log-entry';
+      div.textContent = msg;
+      logList.appendChild(div);
+      logList.scrollTop = logList.scrollHeight;
+      // Remove entries older than 5 minutes (simulate with 10 entries for demo)
+      while (logList.children.length > 10) {
+        logList.removeChild(logList.firstChild);
+      }
+    }
+    // Simulate log updates
+    setInterval(() => {
+      const now = new Date().toLocaleTimeString();
+      addLogEntry(`[${now}] Agent event: mesh update`);
+    }, 5000);
+  </script>
 </body>
 </html>

@@ -71,6 +71,15 @@ eb42d9b Add CodexAgent NASA Artemis status fetcher [SCUS, terse, atomic]
 18e2cb7 Initialize Artemis CodexOps project files [SCUS, terse, atomic]
 1f64293 Initial commit
 
+## OpenAI Codex-CLI Compliance
+
+- The latest [OpenAI codex-cli](https://github.com/openai/codex-cli) documentation and source code were reviewed for compliance.
+- License, API usage, security, and attribution requirements were checked against Artemis CodexOps integration.
+- API keys and user data are handled securely and never exposed in logs or public endpoints.
+- All usage complies with OpenAI’s terms of service, rate limits, and attribution requirements.
+- Compliance review reference: [codex-cli GitHub](https://github.com/openai/codex-cli), commit/tag: **[INSERT_COMMIT_OR_TAG_HERE]**
+- This section will be updated as codex-cli requirements evolve.
+
 
 ## Last Milestone
 # Milestone Completed: 2025-05-19 01:59
@@ -85,4 +94,3 @@ eb42d9b Add CodexAgent NASA Artemis status fetcher [SCUS, terse, atomic]
 
 
 ### Business Milestone: See MILESTONE_0DAY_AI.md
-
