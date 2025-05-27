@@ -9,6 +9,9 @@ on:
 jobs:
   test-and-deploy:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service: [plugin-marketplace, api-billing, certificate-issuer, affiliate-program, pay-per-use, white-label, billing-invoicing, live-events, in-app_purchases, auth]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -63,7 +66,7 @@ jobs:
       - name: Deploy CloudFormation
         if: success()
         run: |
-          aws cloudformation deploy --template-file artemis-codexops/cloudformation-template.yaml --stack-name artemis-codexops-stack --capabilities CAPABILITY_NAMED_IAM
+          aws cloudformation deploy --template-file artemis-codexops/cloudformation-template.yaml --stack-name artemis-codexops-stack-${{ matrix.service }} --capabilities CAPABILITY_NAMED_IAM
 
       - name: Notify on failure
         if: failure()
