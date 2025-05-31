@@ -1,0 +1,1021 @@
+bash: auto-devop.sh: No such file or directory
+bash: auto-devop.sh: No such file or directory
+bash: auto-devop.sh: No such file or directory
+bash: auto-devop.sh: No such file or directory
+bash: auto-devop.sh: No such file or directory
+bash: auto-devop.sh: No such file or directory
+bash: auto-devop.sh: No such file or directory
+bash: auto-devop.sh: No such file or directory
+bash: auto-devop.sh: No such file or directory
+[Sat May 31 13:53:32 CDT 2025] [AUTO-DEVOP] === AGENT CYCLE START ===
+[Sat May 31 13:53:32 CDT 2025] [CTX] Context hash: ca0dc56b6fcf8eb64b87f01f5eed1e9172deb547c395c5386dcc058c322f1c83
+[Sat May 31 13:53:32 CDT 2025] [META] ASCII/ANSI boot dashboard MISSING
+[Sat May 31 13:53:32 CDT 2025] [META] 80 columns MISSING
+[Sat May 31 13:53:32 CDT 2025] [META] animated VFX mesh splash MISSING
+[Sat May 31 13:53:32 CDT 2025] [META] license status/verification MISSING
+[Sat May 31 13:53:32 CDT 2025] [META] Mesh rollcall MISSING
+[Sat May 31 13:53:32 CDT 2025] [META] Tool scan MISSING
+[Sat May 31 13:53:32 CDT 2025] [META] AWS MCP login/auth MISSING
+[Sat May 31 13:53:32 CDT 2025] [META] Centralized logging MISSING
+[Sat May 31 13:53:32 CDT 2025] [META] Menu options MISSING
+[Sat May 31 13:53:32 CDT 2025] [META] Agent registry MISSING
+==== Artemis CodexOps Self-Diagnosis ====
+
+--- GIT STATUS ---
+On branch feature/full-auto-20250531-135328
+Your branch is up to date with 'origin/feature/full-auto-20250531-135328'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   auto-devop.log
+	modified:   bulletproof.log
+	modified:   locks/jetstreamin.lock
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	context.json
+	success/paris/lambda_pkg/openai/resources/beta/threads/sedsZqSI2
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+--- LAST COMMIT ---
+b58d1ef FULL AUTO: Add/commit everything for SCUS [20250531-135328]
+
+--- MAGIC LOOP (Health Check) ---
+curl: (7) Failed to connect to localhost port 8080 after 1 ms: Could not connect to server
+==== Artemis CodexOps Magic Loop: ALL ASPECTS (Self-Healing) ====
+[1/12] Artemis agent...
+{
+  "status": "offline/mock",
+  "missions": [
+    {
+      "name": "Artemis I",
+      "status": "Launched"
+    },
+    {
+      "name": "Artemis II",
+      "status": "Scheduled"
+    }
+  ],
+  "error": "HTTPSConnectionPool(host='llapi.thespacedevs.com', port=443): Max retries exceeded with url: /2.2.0/launch/upcoming/?search=artemis (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1010)')))"
+}
+✅ Agent mission data
+[2/12] API endpoint...
+
+--- health_check.log ---
+    }
+  ],
+  "error": "HTTPSConnectionPool(host='llapi.thespacedevs.com', port=443): Max retries exceeded with url: /2.2.0/launch/upcoming/?search=artemis (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1010)')))"
+}
+✅ Agent mission data
+[2/12] API endpoint...
+✅ API OK
+[3/12] Dashboard UI...
+✅ Dashboard found
+[4/12] Voice agent...
+✅ Voice agent file exists
+[5/12] Vision agent...
+✅ Vision agent file exists
+[6/12] Agent Builder UI...
+✅ Agent Builder UI found
+[7/12] Workflow Builder UI...
+✅ Workflow UI found
+[8/12] Webhook/debug toggle endpoints...
+✅ Patched /api/ endpoint
+[Magic Loop] All checks passed!
+
+--- milestone_health.log ---
+==== Artemis CodexOps Magic Loop: ALL ASPECTS (Self-Healing) ====
+[1/12] Artemis agent...
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/home/success/artemis-codexops/agents/codexagent_nasa_artemis.py", line 28, in <module>
+    from agent_logger import log_status
+  File "/data/data/com.termux/files/home/success/artemis-codexops/agents/agent_logger.py", line 2
+    ndef agent_self_post(name, status="online", version="1.0", endpoint="http://localhost:8080/api/agent_post"):
+         ^^^^^^^^^^^^^^^
+SyntaxError: invalid syntax
+
+--- ENVIRONMENT ---
+TERMUX_IS_DEBUGGABLE_BUILD=0
+TERMUX_APP__BUILD_DATA_DIR=/data/data/com.termux
+TERMUX_MAIN_PACKAGE_FORMAT=debian
+TERMUX__HOME=/data/data/com.termux/files/home
+TERMUX_VERSION=0.118.2
+TERMUX_APP__SE_INFO=default:targetSdkVersion=28:complete
+TERMUX_API_VERSION=0.51.0
+TERMUX_APK_RELEASE=F_DROID
+DEX2OATBOOTCLASSPATH=/apex/com.android.art/javalib/core-oj.jar:/apex/com.android.art/javalib/core-libart.jar:/apex/com.android.art/javalib/okhttp.jar:/apex/com.android.art/javalib/bouncycastle.jar:/apex/com.android.art/javalib/apache-xml.jar:/system/framework/framework.jar:/system/framework/framework-graphics.jar:/system/framework/framework-location.jar:/system/framework/ext.jar:/system/framework/telephony-common.jar:/system/framework/voip-common.jar:/system/framework/ims-common.jar:/system/framework/knoxsdk.jar:/system/framework/com.samsung.android.uwb_extras.jar:/system/framework/framework-nfc.jar:/system/framework/tcmiface.jar:/system/framework/telephony-ext.jar:/system/framework/QPerformance.jar:/system/framework/UxPerformance.jar:/system/framework/esecomm.jar:/apex/com.android.i18n/javalib/core-icu4j.jar
+TERMUX__PREFIX=/data/data/com.termux/files/usr
+TERMUX_APP__SE_FILE_CONTEXT=u:object_r:app_data_file:s0:c154,c257,c512,c768
+TERMUX_APP__LEGACY_DATA_DIR=/data/data/com.termux
+TERMUX__ROOTFS=/data/data/com.termux/files
+BOOTCLASSPATH=/apex/com.android.art/javalib/core-oj.jar:/apex/com.android.art/javalib/core-libart.jar:/apex/com.android.art/javalib/okhttp.jar:/apex/com.android.art/javalib/bouncycastle.jar:/apex/com.android.art/javalib/apache-xml.jar:/system/framework/framework.jar:/system/framework/framework-graphics.jar:/system/framework/framework-location.jar:/system/framework/ext.jar:/system/framework/telephony-common.jar:/system/framework/voip-common.jar:/system/framework/ims-common.jar:/system/framework/knoxsdk.jar:/system/framework/com.samsung.android.uwb_extras.jar:/system/framework/framework-nfc.jar:/system/framework/tcmiface.jar:/system/framework/telephony-ext.jar:/system/framework/QPerformance.jar:/system/framework/UxPerformance.jar:/system/framework/esecomm.jar:/apex/com.android.i18n/javalib/core-icu4j.jar:/apex/com.android.adservices/javalib/framework-adservices.jar:/apex/com.android.adservices/javalib/framework-sdksandbox.jar:/apex/com.android.appsearch/javalib/framework-appsearch.jar:/apex/com.android.btservices/javalib/framework-bluetooth.jar:/apex/com.android.configinfrastructure/javalib/framework-configinfrastructure.jar:/apex/com.android.conscrypt/javalib/conscrypt.jar:/apex/com.android.devicelock/javalib/framework-devicelock.jar:/apex/com.android.healthfitness/javalib/framework-healthfitness.jar:/apex/com.android.ipsec/javalib/android.net.ipsec.ike.jar:/apex/com.android.media/javalib/updatable-media.jar:/apex/com.android.mediaprovider/javalib/framework-mediaprovider.jar:/apex/com.android.mediaprovider/javalib/framework-pdf.jar:/apex/com.android.mediaprovider/javalib/framework-pdf-v.jar:/apex/com.android.mediaprovider/javalib/framework-photopicker.jar:/apex/com.android.ondevicepersonalization/javalib/framework-ondevicepersonalization.jar:/apex/com.android.os.statsd/javalib/framework-statsd.jar:/apex/com.android.permission/javalib/framework-permission.jar:/apex/com.android.permission/javalib/framework-permission-s.jar:/apex/com.android.profiling/javalib/framework-profiling.jar:/apex/com.android.scheduling/javalib/framework-scheduling.jar:/apex/com.android.sdkext/javalib/framework-sdkextensions.jar:/apex/com.android.tethering/javalib/framework-connectivity.jar:/apex/com.android.tethering/javalib/framework-connectivity-t.jar:/apex/com.android.tethering/javalib/framework-tethering.jar:/apex/com.android.uwb/javalib/framework-uwb.jar:/apex/com.android.virt/javalib/framework-virtualization.jar:/apex/com.android.wifi/javalib/framework-wifi.jar:/apex/com.samsung.android.lifeguard/javalib/framework-lifeguard.jar:/apex/com.samsung.android.shell/javalib/framework-samsung-shell.jar
+TERMUX__SE_PROCESS_CONTEXT=u:r:untrusted_app_27:s0:c154,c257,c512,c768
+TERMUX_APP_PID=28388
+PATH=/data/data/com.termux/files/usr/bin
+TERMUX_APP__DATA_DIR=/data/user/0/com.termux
+
+--- AGENT REGISTRY (short) ---
+
+--- PLUGINS DIRECTORY ---
+No plugins dir.
+
+--- PYTHON VERSION ---
+Python 3.12.10
+
+--- PIP FREEZE ---
+openai==1.82.0
+openai-cli==1.0.1
+requests==2.32.3
+
+--- DEVICE INFO (Termux) ---
+Linux localhost 6.1.99-android14-11-30958380-abS928USQS4BYE4 #1 SMP PREEMPT Tue May 13 06:33:01 UTC 2025 aarch64 Android
+
+==== End of DX Diagnosis ====
+(Last 100 lines of health_check.log copied to clipboard, if available)
+[Sat May 31 13:53:35 CDT 2025] [A2A] Broadcasting agent heartbeat: ca0dc56b6fcf8eb64b87f01f5eed1e9172deb547c395c5386dcc058c322f1c83
+[feature/full-auto-20250531-135328 9de9e15] AUTO-DEVOP: Context loaded, meta-rules enforced, mesh agent [20250531-135335]
+ 4 files changed, 167 insertions(+)
+ create mode 100644 context.json
+To https://github.com/jetstreamin/artemis-codexops
+   b58d1ef..9de9e15  feature/full-auto-20250531-135328 -> feature/full-auto-20250531-135328
+[Sat May 31 13:53:36 CDT 2025] [AUTO-DEVOP] === AGENT CYCLE END ===
+[Sat May 31 13:53:55 CDT 2025] [AUTO-DEVOP] === AGENT CYCLE START ===
+[Sat May 31 13:53:55 CDT 2025] [CTX] Context hash: 917d76a47cc4cdf61d069fa2126340ddc9eb79ea53eb540840df26465b06eeeb
+[Sat May 31 13:53:55 CDT 2025] [META] ASCII/ANSI boot dashboard OK
+[Sat May 31 13:53:56 CDT 2025] [META] 80 columns OK
+[Sat May 31 13:53:56 CDT 2025] [META] animated VFX mesh splash OK
+[Sat May 31 13:53:56 CDT 2025] [META] license status/verification OK
+[Sat May 31 13:53:56 CDT 2025] [META] Mesh rollcall OK
+[Sat May 31 13:53:56 CDT 2025] [META] Tool scan OK
+[Sat May 31 13:53:56 CDT 2025] [META] AWS MCP login/auth OK
+[Sat May 31 13:53:56 CDT 2025] [META] Centralized logging OK
+[Sat May 31 13:53:56 CDT 2025] [META] Menu options OK
+[Sat May 31 13:53:56 CDT 2025] [META] Agent registry OK
+==== Artemis CodexOps Self-Diagnosis ====
+
+--- GIT STATUS ---
+On branch feature/full-auto-20250531-135328
+Your branch is up to date with 'origin/feature/full-auto-20250531-135328'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   auto-devop.log
+	modified:   context.json
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+--- LAST COMMIT ---
+9de9e15 AUTO-DEVOP: Context loaded, meta-rules enforced, mesh agent [20250531-135335]
+
+--- MAGIC LOOP (Health Check) ---
+curl: (7) Failed to connect to localhost port 8080 after 1 ms: Could not connect to server
+==== Artemis CodexOps Magic Loop: ALL ASPECTS (Self-Healing) ====
+[1/12] Artemis agent...
+{
+  "status": "offline/mock",
+  "missions": [
+    {
+      "name": "Artemis I",
+      "status": "Launched"
+    },
+    {
+      "name": "Artemis II",
+      "status": "Scheduled"
+    }
+  ],
+  "error": "HTTPSConnectionPool(host='llapi.thespacedevs.com', port=443): Max retries exceeded with url: /2.2.0/launch/upcoming/?search=artemis (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1010)')))"
+}
+✅ Agent mission data
+[2/12] API endpoint...
+
+--- health_check.log ---
+    }
+  ],
+  "error": "HTTPSConnectionPool(host='llapi.thespacedevs.com', port=443): Max retries exceeded with url: /2.2.0/launch/upcoming/?search=artemis (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1010)')))"
+}
+✅ Agent mission data
+[2/12] API endpoint...
+✅ API OK
+[3/12] Dashboard UI...
+✅ Dashboard found
+[4/12] Voice agent...
+✅ Voice agent file exists
+[5/12] Vision agent...
+✅ Vision agent file exists
+[6/12] Agent Builder UI...
+✅ Agent Builder UI found
+[7/12] Workflow Builder UI...
+✅ Workflow UI found
+[8/12] Webhook/debug toggle endpoints...
+✅ Patched /api/ endpoint
+[Magic Loop] All checks passed!
+
+--- milestone_health.log ---
+==== Artemis CodexOps Magic Loop: ALL ASPECTS (Self-Healing) ====
+[1/12] Artemis agent...
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/home/success/artemis-codexops/agents/codexagent_nasa_artemis.py", line 28, in <module>
+    from agent_logger import log_status
+  File "/data/data/com.termux/files/home/success/artemis-codexops/agents/agent_logger.py", line 2
+    ndef agent_self_post(name, status="online", version="1.0", endpoint="http://localhost:8080/api/agent_post"):
+         ^^^^^^^^^^^^^^^
+SyntaxError: invalid syntax
+
+--- ENVIRONMENT ---
+TERMUX_IS_DEBUGGABLE_BUILD=0
+TERMUX_APP__BUILD_DATA_DIR=/data/data/com.termux
+TERMUX_MAIN_PACKAGE_FORMAT=debian
+TERMUX__HOME=/data/data/com.termux/files/home
+TERMUX_VERSION=0.118.2
+TERMUX_APP__SE_INFO=default:targetSdkVersion=28:complete
+TERMUX_API_VERSION=0.51.0
+TERMUX_APK_RELEASE=F_DROID
+DEX2OATBOOTCLASSPATH=/apex/com.android.art/javalib/core-oj.jar:/apex/com.android.art/javalib/core-libart.jar:/apex/com.android.art/javalib/okhttp.jar:/apex/com.android.art/javalib/bouncycastle.jar:/apex/com.android.art/javalib/apache-xml.jar:/system/framework/framework.jar:/system/framework/framework-graphics.jar:/system/framework/framework-location.jar:/system/framework/ext.jar:/system/framework/telephony-common.jar:/system/framework/voip-common.jar:/system/framework/ims-common.jar:/system/framework/knoxsdk.jar:/system/framework/com.samsung.android.uwb_extras.jar:/system/framework/framework-nfc.jar:/system/framework/tcmiface.jar:/system/framework/telephony-ext.jar:/system/framework/QPerformance.jar:/system/framework/UxPerformance.jar:/system/framework/esecomm.jar:/apex/com.android.i18n/javalib/core-icu4j.jar
+TERMUX__PREFIX=/data/data/com.termux/files/usr
+TERMUX_APP__SE_FILE_CONTEXT=u:object_r:app_data_file:s0:c154,c257,c512,c768
+TERMUX_APP__LEGACY_DATA_DIR=/data/data/com.termux
+TERMUX__ROOTFS=/data/data/com.termux/files
+BOOTCLASSPATH=/apex/com.android.art/javalib/core-oj.jar:/apex/com.android.art/javalib/core-libart.jar:/apex/com.android.art/javalib/okhttp.jar:/apex/com.android.art/javalib/bouncycastle.jar:/apex/com.android.art/javalib/apache-xml.jar:/system/framework/framework.jar:/system/framework/framework-graphics.jar:/system/framework/framework-location.jar:/system/framework/ext.jar:/system/framework/telephony-common.jar:/system/framework/voip-common.jar:/system/framework/ims-common.jar:/system/framework/knoxsdk.jar:/system/framework/com.samsung.android.uwb_extras.jar:/system/framework/framework-nfc.jar:/system/framework/tcmiface.jar:/system/framework/telephony-ext.jar:/system/framework/QPerformance.jar:/system/framework/UxPerformance.jar:/system/framework/esecomm.jar:/apex/com.android.i18n/javalib/core-icu4j.jar:/apex/com.android.adservices/javalib/framework-adservices.jar:/apex/com.android.adservices/javalib/framework-sdksandbox.jar:/apex/com.android.appsearch/javalib/framework-appsearch.jar:/apex/com.android.btservices/javalib/framework-bluetooth.jar:/apex/com.android.configinfrastructure/javalib/framework-configinfrastructure.jar:/apex/com.android.conscrypt/javalib/conscrypt.jar:/apex/com.android.devicelock/javalib/framework-devicelock.jar:/apex/com.android.healthfitness/javalib/framework-healthfitness.jar:/apex/com.android.ipsec/javalib/android.net.ipsec.ike.jar:/apex/com.android.media/javalib/updatable-media.jar:/apex/com.android.mediaprovider/javalib/framework-mediaprovider.jar:/apex/com.android.mediaprovider/javalib/framework-pdf.jar:/apex/com.android.mediaprovider/javalib/framework-pdf-v.jar:/apex/com.android.mediaprovider/javalib/framework-photopicker.jar:/apex/com.android.ondevicepersonalization/javalib/framework-ondevicepersonalization.jar:/apex/com.android.os.statsd/javalib/framework-statsd.jar:/apex/com.android.permission/javalib/framework-permission.jar:/apex/com.android.permission/javalib/framework-permission-s.jar:/apex/com.android.profiling/javalib/framework-profiling.jar:/apex/com.android.scheduling/javalib/framework-scheduling.jar:/apex/com.android.sdkext/javalib/framework-sdkextensions.jar:/apex/com.android.tethering/javalib/framework-connectivity.jar:/apex/com.android.tethering/javalib/framework-connectivity-t.jar:/apex/com.android.tethering/javalib/framework-tethering.jar:/apex/com.android.uwb/javalib/framework-uwb.jar:/apex/com.android.virt/javalib/framework-virtualization.jar:/apex/com.android.wifi/javalib/framework-wifi.jar:/apex/com.samsung.android.lifeguard/javalib/framework-lifeguard.jar:/apex/com.samsung.android.shell/javalib/framework-samsung-shell.jar
+TERMUX__SE_PROCESS_CONTEXT=u:r:untrusted_app_27:s0:c154,c257,c512,c768
+TERMUX_APP_PID=28388
+PATH=/data/data/com.termux/files/usr/bin
+TERMUX_APP__DATA_DIR=/data/user/0/com.termux
+
+--- AGENT REGISTRY (short) ---
+
+--- PLUGINS DIRECTORY ---
+No plugins dir.
+
+--- PYTHON VERSION ---
+Python 3.12.10
+
+--- PIP FREEZE ---
+openai==1.82.0
+openai-cli==1.0.1
+requests==2.32.3
+
+--- DEVICE INFO (Termux) ---
+Linux localhost 6.1.99-android14-11-30958380-abS928USQS4BYE4 #1 SMP PREEMPT Tue May 13 06:33:01 UTC 2025 aarch64 Android
+
+==== End of DX Diagnosis ====
+(Last 100 lines of health_check.log copied to clipboard, if available)
+[Sat May 31 13:53:57 CDT 2025] [A2A] Broadcasting agent heartbeat: 917d76a47cc4cdf61d069fa2126340ddc9eb79ea53eb540840df26465b06eeeb
+[Sat May 31 13:53:58 CDT 2025] [AUTO-DEVOP] === AGENT CYCLE END ===
+[Sat May 31 13:55:09 CDT 2025] [AUTO-DEVOP] === AGENT CYCLE START ===
+[Sat May 31 13:55:09 CDT 2025] [CTX] Context hash: 273854d302aa64e43071f8cec3edf133f584d3407989493faf785978ef845e79
+[Sat May 31 13:55:09 CDT 2025] [META] ASCII/ANSI boot dashboard OK
+[Sat May 31 13:55:09 CDT 2025] [META] 80 columns OK
+[Sat May 31 13:55:09 CDT 2025] [META] animated VFX mesh splash OK
+[Sat May 31 13:55:09 CDT 2025] [META] license status/verification OK
+[Sat May 31 13:55:09 CDT 2025] [META] Mesh rollcall OK
+[Sat May 31 13:55:09 CDT 2025] [META] Tool scan OK
+[Sat May 31 13:55:09 CDT 2025] [META] AWS MCP login/auth OK
+[Sat May 31 13:55:09 CDT 2025] [META] Centralized logging OK
+[Sat May 31 13:55:09 CDT 2025] [META] Menu options OK
+[Sat May 31 13:55:09 CDT 2025] [META] Agent registry OK
+==== Artemis CodexOps Self-Diagnosis ====
+
+--- GIT STATUS ---
+On branch feature/full-auto-20250531-135506
+Your branch is up to date with 'origin/feature/full-auto-20250531-135506'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   auto-devop.log
+	modified:   bulletproof.log
+	modified:   context.json
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+--- LAST COMMIT ---
+e7fd7f3 FULL AUTO: Add/commit everything for SCUS [20250531-135506]
+
+--- MAGIC LOOP (Health Check) ---
+curl: (7) Failed to connect to localhost port 8080 after 1 ms: Could not connect to server
+==== Artemis CodexOps Magic Loop: ALL ASPECTS (Self-Healing) ====
+[1/12] Artemis agent...
+{
+  "status": "offline/mock",
+  "missions": [
+    {
+      "name": "Artemis I",
+      "status": "Launched"
+    },
+    {
+      "name": "Artemis II",
+      "status": "Scheduled"
+    }
+  ],
+  "error": "HTTPSConnectionPool(host='llapi.thespacedevs.com', port=443): Max retries exceeded with url: /2.2.0/launch/upcoming/?search=artemis (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1010)')))"
+}
+✅ Agent mission data
+[2/12] API endpoint...
+
+--- health_check.log ---
+    }
+  ],
+  "error": "HTTPSConnectionPool(host='llapi.thespacedevs.com', port=443): Max retries exceeded with url: /2.2.0/launch/upcoming/?search=artemis (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1010)')))"
+}
+✅ Agent mission data
+[2/12] API endpoint...
+✅ API OK
+[3/12] Dashboard UI...
+✅ Dashboard found
+[4/12] Voice agent...
+✅ Voice agent file exists
+[5/12] Vision agent...
+✅ Vision agent file exists
+[6/12] Agent Builder UI...
+✅ Agent Builder UI found
+[7/12] Workflow Builder UI...
+✅ Workflow UI found
+[8/12] Webhook/debug toggle endpoints...
+✅ Patched /api/ endpoint
+[Magic Loop] All checks passed!
+
+--- milestone_health.log ---
+==== Artemis CodexOps Magic Loop: ALL ASPECTS (Self-Healing) ====
+[1/12] Artemis agent...
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/home/success/artemis-codexops/agents/codexagent_nasa_artemis.py", line 28, in <module>
+    from agent_logger import log_status
+  File "/data/data/com.termux/files/home/success/artemis-codexops/agents/agent_logger.py", line 2
+    ndef agent_self_post(name, status="online", version="1.0", endpoint="http://localhost:8080/api/agent_post"):
+         ^^^^^^^^^^^^^^^
+SyntaxError: invalid syntax
+
+--- ENVIRONMENT ---
+TERMUX_IS_DEBUGGABLE_BUILD=0
+TERMUX_APP__BUILD_DATA_DIR=/data/data/com.termux
+TERMUX_MAIN_PACKAGE_FORMAT=debian
+TERMUX__HOME=/data/data/com.termux/files/home
+TERMUX_VERSION=0.118.2
+TERMUX_APP__SE_INFO=default:targetSdkVersion=28:complete
+TERMUX_API_VERSION=0.51.0
+TERMUX_APK_RELEASE=F_DROID
+DEX2OATBOOTCLASSPATH=/apex/com.android.art/javalib/core-oj.jar:/apex/com.android.art/javalib/core-libart.jar:/apex/com.android.art/javalib/okhttp.jar:/apex/com.android.art/javalib/bouncycastle.jar:/apex/com.android.art/javalib/apache-xml.jar:/system/framework/framework.jar:/system/framework/framework-graphics.jar:/system/framework/framework-location.jar:/system/framework/ext.jar:/system/framework/telephony-common.jar:/system/framework/voip-common.jar:/system/framework/ims-common.jar:/system/framework/knoxsdk.jar:/system/framework/com.samsung.android.uwb_extras.jar:/system/framework/framework-nfc.jar:/system/framework/tcmiface.jar:/system/framework/telephony-ext.jar:/system/framework/QPerformance.jar:/system/framework/UxPerformance.jar:/system/framework/esecomm.jar:/apex/com.android.i18n/javalib/core-icu4j.jar
+TERMUX__PREFIX=/data/data/com.termux/files/usr
+TERMUX_APP__SE_FILE_CONTEXT=u:object_r:app_data_file:s0:c154,c257,c512,c768
+TERMUX_APP__LEGACY_DATA_DIR=/data/data/com.termux
+TERMUX__ROOTFS=/data/data/com.termux/files
+BOOTCLASSPATH=/apex/com.android.art/javalib/core-oj.jar:/apex/com.android.art/javalib/core-libart.jar:/apex/com.android.art/javalib/okhttp.jar:/apex/com.android.art/javalib/bouncycastle.jar:/apex/com.android.art/javalib/apache-xml.jar:/system/framework/framework.jar:/system/framework/framework-graphics.jar:/system/framework/framework-location.jar:/system/framework/ext.jar:/system/framework/telephony-common.jar:/system/framework/voip-common.jar:/system/framework/ims-common.jar:/system/framework/knoxsdk.jar:/system/framework/com.samsung.android.uwb_extras.jar:/system/framework/framework-nfc.jar:/system/framework/tcmiface.jar:/system/framework/telephony-ext.jar:/system/framework/QPerformance.jar:/system/framework/UxPerformance.jar:/system/framework/esecomm.jar:/apex/com.android.i18n/javalib/core-icu4j.jar:/apex/com.android.adservices/javalib/framework-adservices.jar:/apex/com.android.adservices/javalib/framework-sdksandbox.jar:/apex/com.android.appsearch/javalib/framework-appsearch.jar:/apex/com.android.btservices/javalib/framework-bluetooth.jar:/apex/com.android.configinfrastructure/javalib/framework-configinfrastructure.jar:/apex/com.android.conscrypt/javalib/conscrypt.jar:/apex/com.android.devicelock/javalib/framework-devicelock.jar:/apex/com.android.healthfitness/javalib/framework-healthfitness.jar:/apex/com.android.ipsec/javalib/android.net.ipsec.ike.jar:/apex/com.android.media/javalib/updatable-media.jar:/apex/com.android.mediaprovider/javalib/framework-mediaprovider.jar:/apex/com.android.mediaprovider/javalib/framework-pdf.jar:/apex/com.android.mediaprovider/javalib/framework-pdf-v.jar:/apex/com.android.mediaprovider/javalib/framework-photopicker.jar:/apex/com.android.ondevicepersonalization/javalib/framework-ondevicepersonalization.jar:/apex/com.android.os.statsd/javalib/framework-statsd.jar:/apex/com.android.permission/javalib/framework-permission.jar:/apex/com.android.permission/javalib/framework-permission-s.jar:/apex/com.android.profiling/javalib/framework-profiling.jar:/apex/com.android.scheduling/javalib/framework-scheduling.jar:/apex/com.android.sdkext/javalib/framework-sdkextensions.jar:/apex/com.android.tethering/javalib/framework-connectivity.jar:/apex/com.android.tethering/javalib/framework-connectivity-t.jar:/apex/com.android.tethering/javalib/framework-tethering.jar:/apex/com.android.uwb/javalib/framework-uwb.jar:/apex/com.android.virt/javalib/framework-virtualization.jar:/apex/com.android.wifi/javalib/framework-wifi.jar:/apex/com.samsung.android.lifeguard/javalib/framework-lifeguard.jar:/apex/com.samsung.android.shell/javalib/framework-samsung-shell.jar
+TERMUX__SE_PROCESS_CONTEXT=u:r:untrusted_app_27:s0:c154,c257,c512,c768
+TERMUX_APP_PID=28388
+PATH=/data/data/com.termux/files/usr/bin
+TERMUX_APP__DATA_DIR=/data/user/0/com.termux
+
+--- AGENT REGISTRY (short) ---
+
+--- PLUGINS DIRECTORY ---
+No plugins dir.
+
+--- PYTHON VERSION ---
+Python 3.12.10
+
+--- PIP FREEZE ---
+openai==1.82.0
+openai-cli==1.0.1
+requests==2.32.3
+
+--- DEVICE INFO (Termux) ---
+Linux localhost 6.1.99-android14-11-30958380-abS928USQS4BYE4 #1 SMP PREEMPT Tue May 13 06:33:01 UTC 2025 aarch64 Android
+
+==== End of DX Diagnosis ====
+(Last 100 lines of health_check.log copied to clipboard, if available)
+[Sat May 31 13:55:11 CDT 2025] [A2A] Broadcasting agent heartbeat: 273854d302aa64e43071f8cec3edf133f584d3407989493faf785978ef845e79
+[feature/full-auto-20250531-135506 1a89a42] AUTO-DEVOP: Context loaded, meta-rules enforced, mesh agent [20250531-135511]
+ 3 files changed, 134 insertions(+), 1 deletion(-)
+To https://github.com/jetstreamin/artemis-codexops
+   e7fd7f3..1a89a42  feature/full-auto-20250531-135506 -> feature/full-auto-20250531-135506
+[Sat May 31 13:55:12 CDT 2025] [AUTO-DEVOP] === AGENT CYCLE END ===
+[Sat May 31 13:56:58 CDT 2025] [AUTO-DEVOP] === AGENT CYCLE START ===
+[Sat May 31 13:56:59 CDT 2025] [CTX] Context hash: 94328716cb54d0e22f7bae22010d3c111c1009fff88480cdc8bf1aca16099a8a
+[Sat May 31 13:56:59 CDT 2025] [META] ASCII/ANSI boot dashboard OK
+[Sat May 31 13:56:59 CDT 2025] [META] 80 columns OK
+[Sat May 31 13:56:59 CDT 2025] [META] animated VFX mesh splash OK
+[Sat May 31 13:56:59 CDT 2025] [META] license status/verification OK
+[Sat May 31 13:56:59 CDT 2025] [META] Mesh rollcall OK
+[Sat May 31 13:56:59 CDT 2025] [META] Tool scan OK
+[Sat May 31 13:56:59 CDT 2025] [META] AWS MCP login/auth OK
+[Sat May 31 13:56:59 CDT 2025] [META] Centralized logging OK
+[Sat May 31 13:56:59 CDT 2025] [META] Menu options OK
+[Sat May 31 13:56:59 CDT 2025] [META] Agent registry OK
+==== Artemis CodexOps Self-Diagnosis ====
+
+--- GIT STATUS ---
+On branch feature/full-auto-20250531-135506
+Your branch is up to date with 'origin/feature/full-auto-20250531-135506'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   auto-devop.log
+	modified:   bulletproof.log
+	modified:   context.json
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+--- LAST COMMIT ---
+1a89a42 AUTO-DEVOP: Context loaded, meta-rules enforced, mesh agent [20250531-135511]
+
+--- MAGIC LOOP (Health Check) ---
+curl: (7) Failed to connect to localhost port 8080 after 1 ms: Could not connect to server
+==== Artemis CodexOps Magic Loop: ALL ASPECTS (Self-Healing) ====
+[1/12] Artemis agent...
+{
+  "status": "offline/mock",
+  "missions": [
+    {
+      "name": "Artemis I",
+      "status": "Launched"
+    },
+    {
+      "name": "Artemis II",
+      "status": "Scheduled"
+    }
+  ],
+  "error": "HTTPSConnectionPool(host='llapi.thespacedevs.com', port=443): Max retries exceeded with url: /2.2.0/launch/upcoming/?search=artemis (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1010)')))"
+}
+✅ Agent mission data
+[2/12] API endpoint...
+
+--- health_check.log ---
+    }
+  ],
+  "error": "HTTPSConnectionPool(host='llapi.thespacedevs.com', port=443): Max retries exceeded with url: /2.2.0/launch/upcoming/?search=artemis (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1010)')))"
+}
+✅ Agent mission data
+[2/12] API endpoint...
+✅ API OK
+[3/12] Dashboard UI...
+✅ Dashboard found
+[4/12] Voice agent...
+✅ Voice agent file exists
+[5/12] Vision agent...
+✅ Vision agent file exists
+[6/12] Agent Builder UI...
+✅ Agent Builder UI found
+[7/12] Workflow Builder UI...
+✅ Workflow UI found
+[8/12] Webhook/debug toggle endpoints...
+✅ Patched /api/ endpoint
+[Magic Loop] All checks passed!
+
+--- milestone_health.log ---
+==== Artemis CodexOps Magic Loop: ALL ASPECTS (Self-Healing) ====
+[1/12] Artemis agent...
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/home/success/artemis-codexops/agents/codexagent_nasa_artemis.py", line 28, in <module>
+    from agent_logger import log_status
+  File "/data/data/com.termux/files/home/success/artemis-codexops/agents/agent_logger.py", line 2
+    ndef agent_self_post(name, status="online", version="1.0", endpoint="http://localhost:8080/api/agent_post"):
+         ^^^^^^^^^^^^^^^
+SyntaxError: invalid syntax
+
+--- ENVIRONMENT ---
+TERMUX_IS_DEBUGGABLE_BUILD=0
+TERMUX_APP__BUILD_DATA_DIR=/data/data/com.termux
+TERMUX_MAIN_PACKAGE_FORMAT=debian
+TERMUX__HOME=/data/data/com.termux/files/home
+TERMUX_VERSION=0.118.2
+TERMUX_APP__SE_INFO=default:targetSdkVersion=28:complete
+TERMUX_API_VERSION=0.51.0
+TERMUX_APK_RELEASE=F_DROID
+DEX2OATBOOTCLASSPATH=/apex/com.android.art/javalib/core-oj.jar:/apex/com.android.art/javalib/core-libart.jar:/apex/com.android.art/javalib/okhttp.jar:/apex/com.android.art/javalib/bouncycastle.jar:/apex/com.android.art/javalib/apache-xml.jar:/system/framework/framework.jar:/system/framework/framework-graphics.jar:/system/framework/framework-location.jar:/system/framework/ext.jar:/system/framework/telephony-common.jar:/system/framework/voip-common.jar:/system/framework/ims-common.jar:/system/framework/knoxsdk.jar:/system/framework/com.samsung.android.uwb_extras.jar:/system/framework/framework-nfc.jar:/system/framework/tcmiface.jar:/system/framework/telephony-ext.jar:/system/framework/QPerformance.jar:/system/framework/UxPerformance.jar:/system/framework/esecomm.jar:/apex/com.android.i18n/javalib/core-icu4j.jar
+TERMUX__PREFIX=/data/data/com.termux/files/usr
+TERMUX_APP__SE_FILE_CONTEXT=u:object_r:app_data_file:s0:c154,c257,c512,c768
+TERMUX_APP__LEGACY_DATA_DIR=/data/data/com.termux
+TERMUX__ROOTFS=/data/data/com.termux/files
+BOOTCLASSPATH=/apex/com.android.art/javalib/core-oj.jar:/apex/com.android.art/javalib/core-libart.jar:/apex/com.android.art/javalib/okhttp.jar:/apex/com.android.art/javalib/bouncycastle.jar:/apex/com.android.art/javalib/apache-xml.jar:/system/framework/framework.jar:/system/framework/framework-graphics.jar:/system/framework/framework-location.jar:/system/framework/ext.jar:/system/framework/telephony-common.jar:/system/framework/voip-common.jar:/system/framework/ims-common.jar:/system/framework/knoxsdk.jar:/system/framework/com.samsung.android.uwb_extras.jar:/system/framework/framework-nfc.jar:/system/framework/tcmiface.jar:/system/framework/telephony-ext.jar:/system/framework/QPerformance.jar:/system/framework/UxPerformance.jar:/system/framework/esecomm.jar:/apex/com.android.i18n/javalib/core-icu4j.jar:/apex/com.android.adservices/javalib/framework-adservices.jar:/apex/com.android.adservices/javalib/framework-sdksandbox.jar:/apex/com.android.appsearch/javalib/framework-appsearch.jar:/apex/com.android.btservices/javalib/framework-bluetooth.jar:/apex/com.android.configinfrastructure/javalib/framework-configinfrastructure.jar:/apex/com.android.conscrypt/javalib/conscrypt.jar:/apex/com.android.devicelock/javalib/framework-devicelock.jar:/apex/com.android.healthfitness/javalib/framework-healthfitness.jar:/apex/com.android.ipsec/javalib/android.net.ipsec.ike.jar:/apex/com.android.media/javalib/updatable-media.jar:/apex/com.android.mediaprovider/javalib/framework-mediaprovider.jar:/apex/com.android.mediaprovider/javalib/framework-pdf.jar:/apex/com.android.mediaprovider/javalib/framework-pdf-v.jar:/apex/com.android.mediaprovider/javalib/framework-photopicker.jar:/apex/com.android.ondevicepersonalization/javalib/framework-ondevicepersonalization.jar:/apex/com.android.os.statsd/javalib/framework-statsd.jar:/apex/com.android.permission/javalib/framework-permission.jar:/apex/com.android.permission/javalib/framework-permission-s.jar:/apex/com.android.profiling/javalib/framework-profiling.jar:/apex/com.android.scheduling/javalib/framework-scheduling.jar:/apex/com.android.sdkext/javalib/framework-sdkextensions.jar:/apex/com.android.tethering/javalib/framework-connectivity.jar:/apex/com.android.tethering/javalib/framework-connectivity-t.jar:/apex/com.android.tethering/javalib/framework-tethering.jar:/apex/com.android.uwb/javalib/framework-uwb.jar:/apex/com.android.virt/javalib/framework-virtualization.jar:/apex/com.android.wifi/javalib/framework-wifi.jar:/apex/com.samsung.android.lifeguard/javalib/framework-lifeguard.jar:/apex/com.samsung.android.shell/javalib/framework-samsung-shell.jar
+TERMUX__SE_PROCESS_CONTEXT=u:r:untrusted_app_27:s0:c154,c257,c512,c768
+TERMUX_APP_PID=28388
+PATH=/data/data/com.termux/files/usr/bin
+TERMUX_APP__DATA_DIR=/data/user/0/com.termux
+
+--- AGENT REGISTRY (short) ---
+
+--- PLUGINS DIRECTORY ---
+No plugins dir.
+
+--- PYTHON VERSION ---
+Python 3.12.10
+
+--- PIP FREEZE ---
+openai==1.82.0
+openai-cli==1.0.1
+requests==2.32.3
+
+--- DEVICE INFO (Termux) ---
+Linux localhost 6.1.99-android14-11-30958380-abS928USQS4BYE4 #1 SMP PREEMPT Tue May 13 06:33:01 UTC 2025 aarch64 Android
+
+==== End of DX Diagnosis ====
+(Last 100 lines of health_check.log copied to clipboard, if available)
+[Sat May 31 13:57:01 CDT 2025] [A2A] Broadcasting agent heartbeat: 94328716cb54d0e22f7bae22010d3c111c1009fff88480cdc8bf1aca16099a8a
+[Sat May 31 13:57:02 CDT 2025] [AUTO-DEVOP] === AGENT CYCLE END ===
+[Sat May 31 13:58:06 CDT 2025] [AUTO-DEVOP] === AGENT CYCLE START ===
+[Sat May 31 13:58:07 CDT 2025] [CTX] Context hash: f40bcba0330b71cc8e0ed14deb2623603c9d617420b9fd31a30179f2f123d6c1
+[Sat May 31 13:58:07 CDT 2025] [META] ASCII/ANSI boot dashboard OK
+[Sat May 31 13:58:07 CDT 2025] [META] 80 columns OK
+[Sat May 31 13:58:07 CDT 2025] [META] animated VFX mesh splash OK
+[Sat May 31 13:58:07 CDT 2025] [META] license status/verification OK
+[Sat May 31 13:58:07 CDT 2025] [META] Mesh rollcall OK
+[Sat May 31 13:58:07 CDT 2025] [META] Tool scan OK
+[Sat May 31 13:58:07 CDT 2025] [META] AWS MCP login/auth OK
+[Sat May 31 13:58:07 CDT 2025] [META] Centralized logging OK
+[Sat May 31 13:58:07 CDT 2025] [META] Menu options OK
+[Sat May 31 13:58:07 CDT 2025] [META] Agent registry OK
+==== Artemis CodexOps Self-Diagnosis ====
+
+--- GIT STATUS ---
+On branch feature/full-auto-20250531-135803
+Your branch is up to date with 'origin/feature/full-auto-20250531-135803'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   auto-devop.log
+	modified:   bulletproof.log
+	modified:   context.json
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+--- LAST COMMIT ---
+e94e331 FULL AUTO: Add/commit everything for SCUS [20250531-135803]
+
+--- MAGIC LOOP (Health Check) ---
+curl: (7) Failed to connect to localhost port 8080 after 1 ms: Could not connect to server
+==== Artemis CodexOps Magic Loop: ALL ASPECTS (Self-Healing) ====
+[1/12] Artemis agent...
+{
+  "status": "offline/mock",
+  "missions": [
+    {
+      "name": "Artemis I",
+      "status": "Launched"
+    },
+    {
+      "name": "Artemis II",
+      "status": "Scheduled"
+    }
+  ],
+  "error": "HTTPSConnectionPool(host='llapi.thespacedevs.com', port=443): Max retries exceeded with url: /2.2.0/launch/upcoming/?search=artemis (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1010)')))"
+}
+✅ Agent mission data
+[2/12] API endpoint...
+
+--- health_check.log ---
+    }
+  ],
+  "error": "HTTPSConnectionPool(host='llapi.thespacedevs.com', port=443): Max retries exceeded with url: /2.2.0/launch/upcoming/?search=artemis (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1010)')))"
+}
+✅ Agent mission data
+[2/12] API endpoint...
+✅ API OK
+[3/12] Dashboard UI...
+✅ Dashboard found
+[4/12] Voice agent...
+✅ Voice agent file exists
+[5/12] Vision agent...
+✅ Vision agent file exists
+[6/12] Agent Builder UI...
+✅ Agent Builder UI found
+[7/12] Workflow Builder UI...
+✅ Workflow UI found
+[8/12] Webhook/debug toggle endpoints...
+✅ Patched /api/ endpoint
+[Magic Loop] All checks passed!
+
+--- milestone_health.log ---
+==== Artemis CodexOps Magic Loop: ALL ASPECTS (Self-Healing) ====
+[1/12] Artemis agent...
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/home/success/artemis-codexops/agents/codexagent_nasa_artemis.py", line 28, in <module>
+    from agent_logger import log_status
+  File "/data/data/com.termux/files/home/success/artemis-codexops/agents/agent_logger.py", line 2
+    ndef agent_self_post(name, status="online", version="1.0", endpoint="http://localhost:8080/api/agent_post"):
+         ^^^^^^^^^^^^^^^
+SyntaxError: invalid syntax
+
+--- ENVIRONMENT ---
+TERMUX_IS_DEBUGGABLE_BUILD=0
+TERMUX_APP__BUILD_DATA_DIR=/data/data/com.termux
+TERMUX_MAIN_PACKAGE_FORMAT=debian
+TERMUX__HOME=/data/data/com.termux/files/home
+TERMUX_VERSION=0.118.2
+TERMUX_APP__SE_INFO=default:targetSdkVersion=28:complete
+TERMUX_API_VERSION=0.51.0
+TERMUX_APK_RELEASE=F_DROID
+DEX2OATBOOTCLASSPATH=/apex/com.android.art/javalib/core-oj.jar:/apex/com.android.art/javalib/core-libart.jar:/apex/com.android.art/javalib/okhttp.jar:/apex/com.android.art/javalib/bouncycastle.jar:/apex/com.android.art/javalib/apache-xml.jar:/system/framework/framework.jar:/system/framework/framework-graphics.jar:/system/framework/framework-location.jar:/system/framework/ext.jar:/system/framework/telephony-common.jar:/system/framework/voip-common.jar:/system/framework/ims-common.jar:/system/framework/knoxsdk.jar:/system/framework/com.samsung.android.uwb_extras.jar:/system/framework/framework-nfc.jar:/system/framework/tcmiface.jar:/system/framework/telephony-ext.jar:/system/framework/QPerformance.jar:/system/framework/UxPerformance.jar:/system/framework/esecomm.jar:/apex/com.android.i18n/javalib/core-icu4j.jar
+TERMUX__PREFIX=/data/data/com.termux/files/usr
+TERMUX_APP__SE_FILE_CONTEXT=u:object_r:app_data_file:s0:c154,c257,c512,c768
+TERMUX_APP__LEGACY_DATA_DIR=/data/data/com.termux
+TERMUX__ROOTFS=/data/data/com.termux/files
+BOOTCLASSPATH=/apex/com.android.art/javalib/core-oj.jar:/apex/com.android.art/javalib/core-libart.jar:/apex/com.android.art/javalib/okhttp.jar:/apex/com.android.art/javalib/bouncycastle.jar:/apex/com.android.art/javalib/apache-xml.jar:/system/framework/framework.jar:/system/framework/framework-graphics.jar:/system/framework/framework-location.jar:/system/framework/ext.jar:/system/framework/telephony-common.jar:/system/framework/voip-common.jar:/system/framework/ims-common.jar:/system/framework/knoxsdk.jar:/system/framework/com.samsung.android.uwb_extras.jar:/system/framework/framework-nfc.jar:/system/framework/tcmiface.jar:/system/framework/telephony-ext.jar:/system/framework/QPerformance.jar:/system/framework/UxPerformance.jar:/system/framework/esecomm.jar:/apex/com.android.i18n/javalib/core-icu4j.jar:/apex/com.android.adservices/javalib/framework-adservices.jar:/apex/com.android.adservices/javalib/framework-sdksandbox.jar:/apex/com.android.appsearch/javalib/framework-appsearch.jar:/apex/com.android.btservices/javalib/framework-bluetooth.jar:/apex/com.android.configinfrastructure/javalib/framework-configinfrastructure.jar:/apex/com.android.conscrypt/javalib/conscrypt.jar:/apex/com.android.devicelock/javalib/framework-devicelock.jar:/apex/com.android.healthfitness/javalib/framework-healthfitness.jar:/apex/com.android.ipsec/javalib/android.net.ipsec.ike.jar:/apex/com.android.media/javalib/updatable-media.jar:/apex/com.android.mediaprovider/javalib/framework-mediaprovider.jar:/apex/com.android.mediaprovider/javalib/framework-pdf.jar:/apex/com.android.mediaprovider/javalib/framework-pdf-v.jar:/apex/com.android.mediaprovider/javalib/framework-photopicker.jar:/apex/com.android.ondevicepersonalization/javalib/framework-ondevicepersonalization.jar:/apex/com.android.os.statsd/javalib/framework-statsd.jar:/apex/com.android.permission/javalib/framework-permission.jar:/apex/com.android.permission/javalib/framework-permission-s.jar:/apex/com.android.profiling/javalib/framework-profiling.jar:/apex/com.android.scheduling/javalib/framework-scheduling.jar:/apex/com.android.sdkext/javalib/framework-sdkextensions.jar:/apex/com.android.tethering/javalib/framework-connectivity.jar:/apex/com.android.tethering/javalib/framework-connectivity-t.jar:/apex/com.android.tethering/javalib/framework-tethering.jar:/apex/com.android.uwb/javalib/framework-uwb.jar:/apex/com.android.virt/javalib/framework-virtualization.jar:/apex/com.android.wifi/javalib/framework-wifi.jar:/apex/com.samsung.android.lifeguard/javalib/framework-lifeguard.jar:/apex/com.samsung.android.shell/javalib/framework-samsung-shell.jar
+TERMUX__SE_PROCESS_CONTEXT=u:r:untrusted_app_27:s0:c154,c257,c512,c768
+TERMUX_APP_PID=28388
+PATH=/data/data/com.termux/files/usr/bin
+TERMUX_APP__DATA_DIR=/data/user/0/com.termux
+
+--- AGENT REGISTRY (short) ---
+
+--- PLUGINS DIRECTORY ---
+No plugins dir.
+
+--- PYTHON VERSION ---
+Python 3.12.10
+
+--- PIP FREEZE ---
+openai==1.82.0
+openai-cli==1.0.1
+requests==2.32.3
+
+--- DEVICE INFO (Termux) ---
+Linux localhost 6.1.99-android14-11-30958380-abS928USQS4BYE4 #1 SMP PREEMPT Tue May 13 06:33:01 UTC 2025 aarch64 Android
+
+==== End of DX Diagnosis ====
+(Last 100 lines of health_check.log copied to clipboard, if available)
+[Sat May 31 13:58:08 CDT 2025] [A2A] Broadcasting agent heartbeat: f40bcba0330b71cc8e0ed14deb2623603c9d617420b9fd31a30179f2f123d6c1
+[feature/full-auto-20250531-135803 b9b86bb] AUTO-DEVOP: Context loaded, meta-rules enforced, mesh agent [20250531-135809]
+ 3 files changed, 134 insertions(+), 1 deletion(-)
+To https://github.com/jetstreamin/artemis-codexops
+   e94e331..b9b86bb  feature/full-auto-20250531-135803 -> feature/full-auto-20250531-135803
+[Sat May 31 13:58:09 CDT 2025] [AUTO-DEVOP] === AGENT CYCLE END ===
+[Sat May 31 13:59:42 CDT 2025] [AUTO-DEVOP] === AGENT CYCLE START ===
+[Sat May 31 13:59:42 CDT 2025] [CTX] Context hash: 57b4504c137a1e8a8de0b3a7f5a9c98b34ac6a440ce7ce3d46d259906d3ee240
+[Sat May 31 13:59:42 CDT 2025] [META] ASCII/ANSI boot dashboard OK
+[Sat May 31 13:59:42 CDT 2025] [META] 80 columns OK
+[Sat May 31 13:59:42 CDT 2025] [META] animated VFX mesh splash OK
+[Sat May 31 13:59:42 CDT 2025] [META] license status/verification OK
+[Sat May 31 13:59:42 CDT 2025] [META] Mesh rollcall OK
+[Sat May 31 13:59:42 CDT 2025] [META] Tool scan OK
+[Sat May 31 13:59:42 CDT 2025] [META] AWS MCP login/auth OK
+[Sat May 31 13:59:42 CDT 2025] [META] Centralized logging OK
+[Sat May 31 13:59:42 CDT 2025] [META] Menu options OK
+[Sat May 31 13:59:42 CDT 2025] [META] Agent registry OK
+==== Artemis CodexOps Self-Diagnosis ====
+
+--- GIT STATUS ---
+On branch feature/full-auto-20250531-135939
+Your branch is up to date with 'origin/feature/full-auto-20250531-135939'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   auto-devop.log
+	modified:   bulletproof.log
+	modified:   context.json
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+--- LAST COMMIT ---
+ab47f5a FULL AUTO: Add/commit everything for SCUS [20250531-135939]
+
+--- MAGIC LOOP (Health Check) ---
+curl: (7) Failed to connect to localhost port 8080 after 1 ms: Could not connect to server
+==== Artemis CodexOps Magic Loop: ALL ASPECTS (Self-Healing) ====
+[1/12] Artemis agent...
+{
+  "status": "offline/mock",
+  "missions": [
+    {
+      "name": "Artemis I",
+      "status": "Launched"
+    },
+    {
+      "name": "Artemis II",
+      "status": "Scheduled"
+    }
+  ],
+  "error": "HTTPSConnectionPool(host='llapi.thespacedevs.com', port=443): Max retries exceeded with url: /2.2.0/launch/upcoming/?search=artemis (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1010)')))"
+}
+✅ Agent mission data
+[2/12] API endpoint...
+
+--- health_check.log ---
+    }
+  ],
+  "error": "HTTPSConnectionPool(host='llapi.thespacedevs.com', port=443): Max retries exceeded with url: /2.2.0/launch/upcoming/?search=artemis (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1010)')))"
+}
+✅ Agent mission data
+[2/12] API endpoint...
+✅ API OK
+[3/12] Dashboard UI...
+✅ Dashboard found
+[4/12] Voice agent...
+✅ Voice agent file exists
+[5/12] Vision agent...
+✅ Vision agent file exists
+[6/12] Agent Builder UI...
+✅ Agent Builder UI found
+[7/12] Workflow Builder UI...
+✅ Workflow UI found
+[8/12] Webhook/debug toggle endpoints...
+✅ Patched /api/ endpoint
+[Magic Loop] All checks passed!
+
+--- milestone_health.log ---
+==== Artemis CodexOps Magic Loop: ALL ASPECTS (Self-Healing) ====
+[1/12] Artemis agent...
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/home/success/artemis-codexops/agents/codexagent_nasa_artemis.py", line 28, in <module>
+    from agent_logger import log_status
+  File "/data/data/com.termux/files/home/success/artemis-codexops/agents/agent_logger.py", line 2
+    ndef agent_self_post(name, status="online", version="1.0", endpoint="http://localhost:8080/api/agent_post"):
+         ^^^^^^^^^^^^^^^
+SyntaxError: invalid syntax
+
+--- ENVIRONMENT ---
+TERMUX_IS_DEBUGGABLE_BUILD=0
+TERMUX_APP__BUILD_DATA_DIR=/data/data/com.termux
+TERMUX_MAIN_PACKAGE_FORMAT=debian
+TERMUX__HOME=/data/data/com.termux/files/home
+TERMUX_VERSION=0.118.2
+TERMUX_APP__SE_INFO=default:targetSdkVersion=28:complete
+TERMUX_API_VERSION=0.51.0
+TERMUX_APK_RELEASE=F_DROID
+DEX2OATBOOTCLASSPATH=/apex/com.android.art/javalib/core-oj.jar:/apex/com.android.art/javalib/core-libart.jar:/apex/com.android.art/javalib/okhttp.jar:/apex/com.android.art/javalib/bouncycastle.jar:/apex/com.android.art/javalib/apache-xml.jar:/system/framework/framework.jar:/system/framework/framework-graphics.jar:/system/framework/framework-location.jar:/system/framework/ext.jar:/system/framework/telephony-common.jar:/system/framework/voip-common.jar:/system/framework/ims-common.jar:/system/framework/knoxsdk.jar:/system/framework/com.samsung.android.uwb_extras.jar:/system/framework/framework-nfc.jar:/system/framework/tcmiface.jar:/system/framework/telephony-ext.jar:/system/framework/QPerformance.jar:/system/framework/UxPerformance.jar:/system/framework/esecomm.jar:/apex/com.android.i18n/javalib/core-icu4j.jar
+TERMUX__PREFIX=/data/data/com.termux/files/usr
+TERMUX_APP__SE_FILE_CONTEXT=u:object_r:app_data_file:s0:c154,c257,c512,c768
+TERMUX_APP__LEGACY_DATA_DIR=/data/data/com.termux
+TERMUX__ROOTFS=/data/data/com.termux/files
+BOOTCLASSPATH=/apex/com.android.art/javalib/core-oj.jar:/apex/com.android.art/javalib/core-libart.jar:/apex/com.android.art/javalib/okhttp.jar:/apex/com.android.art/javalib/bouncycastle.jar:/apex/com.android.art/javalib/apache-xml.jar:/system/framework/framework.jar:/system/framework/framework-graphics.jar:/system/framework/framework-location.jar:/system/framework/ext.jar:/system/framework/telephony-common.jar:/system/framework/voip-common.jar:/system/framework/ims-common.jar:/system/framework/knoxsdk.jar:/system/framework/com.samsung.android.uwb_extras.jar:/system/framework/framework-nfc.jar:/system/framework/tcmiface.jar:/system/framework/telephony-ext.jar:/system/framework/QPerformance.jar:/system/framework/UxPerformance.jar:/system/framework/esecomm.jar:/apex/com.android.i18n/javalib/core-icu4j.jar:/apex/com.android.adservices/javalib/framework-adservices.jar:/apex/com.android.adservices/javalib/framework-sdksandbox.jar:/apex/com.android.appsearch/javalib/framework-appsearch.jar:/apex/com.android.btservices/javalib/framework-bluetooth.jar:/apex/com.android.configinfrastructure/javalib/framework-configinfrastructure.jar:/apex/com.android.conscrypt/javalib/conscrypt.jar:/apex/com.android.devicelock/javalib/framework-devicelock.jar:/apex/com.android.healthfitness/javalib/framework-healthfitness.jar:/apex/com.android.ipsec/javalib/android.net.ipsec.ike.jar:/apex/com.android.media/javalib/updatable-media.jar:/apex/com.android.mediaprovider/javalib/framework-mediaprovider.jar:/apex/com.android.mediaprovider/javalib/framework-pdf.jar:/apex/com.android.mediaprovider/javalib/framework-pdf-v.jar:/apex/com.android.mediaprovider/javalib/framework-photopicker.jar:/apex/com.android.ondevicepersonalization/javalib/framework-ondevicepersonalization.jar:/apex/com.android.os.statsd/javalib/framework-statsd.jar:/apex/com.android.permission/javalib/framework-permission.jar:/apex/com.android.permission/javalib/framework-permission-s.jar:/apex/com.android.profiling/javalib/framework-profiling.jar:/apex/com.android.scheduling/javalib/framework-scheduling.jar:/apex/com.android.sdkext/javalib/framework-sdkextensions.jar:/apex/com.android.tethering/javalib/framework-connectivity.jar:/apex/com.android.tethering/javalib/framework-connectivity-t.jar:/apex/com.android.tethering/javalib/framework-tethering.jar:/apex/com.android.uwb/javalib/framework-uwb.jar:/apex/com.android.virt/javalib/framework-virtualization.jar:/apex/com.android.wifi/javalib/framework-wifi.jar:/apex/com.samsung.android.lifeguard/javalib/framework-lifeguard.jar:/apex/com.samsung.android.shell/javalib/framework-samsung-shell.jar
+TERMUX__SE_PROCESS_CONTEXT=u:r:untrusted_app_27:s0:c154,c257,c512,c768
+TERMUX_APP_PID=28388
+PATH=/data/data/com.termux/files/usr/bin
+TERMUX_APP__DATA_DIR=/data/user/0/com.termux
+
+--- AGENT REGISTRY (short) ---
+
+--- PLUGINS DIRECTORY ---
+No plugins dir.
+
+--- PYTHON VERSION ---
+Python 3.12.10
+
+--- PIP FREEZE ---
+openai==1.82.0
+openai-cli==1.0.1
+requests==2.32.3
+
+--- DEVICE INFO (Termux) ---
+Linux localhost 6.1.99-android14-11-30958380-abS928USQS4BYE4 #1 SMP PREEMPT Tue May 13 06:33:01 UTC 2025 aarch64 Android
+
+==== End of DX Diagnosis ====
+(Last 100 lines of health_check.log copied to clipboard, if available)
+[Sat May 31 13:59:44 CDT 2025] [A2A] Broadcasting agent heartbeat: 57b4504c137a1e8a8de0b3a7f5a9c98b34ac6a440ce7ce3d46d259906d3ee240
+[feature/full-auto-20250531-135939 875b839] AUTO-DEVOP: Context loaded, meta-rules enforced, mesh agent [20250531-135945]
+ 3 files changed, 134 insertions(+), 1 deletion(-)
+To https://github.com/jetstreamin/artemis-codexops
+   ab47f5a..875b839  feature/full-auto-20250531-135939 -> feature/full-auto-20250531-135939
+[Sat May 31 13:59:45 CDT 2025] [AUTO-DEVOP] === AGENT CYCLE END ===
+[Sat May 31 14:00:02 CDT 2025] [AUTO-DEVOP] === AGENT CYCLE START ===
+[Sat May 31 14:00:02 CDT 2025] [CTX] Context hash: 2ede182c05b910302c6b1376d78dc1329bfad10ec59aed61cb5cd1cb30b8b6c1
+[Sat May 31 14:00:02 CDT 2025] [META] ASCII/ANSI boot dashboard OK
+[Sat May 31 14:00:02 CDT 2025] [META] 80 columns OK
+[Sat May 31 14:00:02 CDT 2025] [META] animated VFX mesh splash OK
+[Sat May 31 14:00:02 CDT 2025] [META] license status/verification OK
+[Sat May 31 14:00:02 CDT 2025] [META] Mesh rollcall OK
+[Sat May 31 14:00:02 CDT 2025] [META] Tool scan OK
+[Sat May 31 14:00:02 CDT 2025] [META] AWS MCP login/auth OK
+[Sat May 31 14:00:02 CDT 2025] [META] Centralized logging OK
+[Sat May 31 14:00:02 CDT 2025] [META] Menu options OK
+[Sat May 31 14:00:02 CDT 2025] [META] Agent registry OK
+==== Artemis CodexOps Self-Diagnosis ====
+
+--- GIT STATUS ---
+On branch feature/full-auto-20250531-135939
+Your branch is up to date with 'origin/feature/full-auto-20250531-135939'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   auto-devop.log
+	modified:   context.json
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+--- LAST COMMIT ---
+875b839 AUTO-DEVOP: Context loaded, meta-rules enforced, mesh agent [20250531-135945]
+
+--- MAGIC LOOP (Health Check) ---
+curl: (7) Failed to connect to localhost port 8080 after 1 ms: Could not connect to server
+==== Artemis CodexOps Magic Loop: ALL ASPECTS (Self-Healing) ====
+[1/12] Artemis agent...
+{
+  "status": "offline/mock",
+  "missions": [
+    {
+      "name": "Artemis I",
+      "status": "Launched"
+    },
+    {
+      "name": "Artemis II",
+      "status": "Scheduled"
+    }
+  ],
+  "error": "HTTPSConnectionPool(host='llapi.thespacedevs.com', port=443): Max retries exceeded with url: /2.2.0/launch/upcoming/?search=artemis (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1010)')))"
+}
+✅ Agent mission data
+[2/12] API endpoint...
+
+--- health_check.log ---
+    }
+  ],
+  "error": "HTTPSConnectionPool(host='llapi.thespacedevs.com', port=443): Max retries exceeded with url: /2.2.0/launch/upcoming/?search=artemis (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1010)')))"
+}
+✅ Agent mission data
+[2/12] API endpoint...
+✅ API OK
+[3/12] Dashboard UI...
+✅ Dashboard found
+[4/12] Voice agent...
+✅ Voice agent file exists
+[5/12] Vision agent...
+✅ Vision agent file exists
+[6/12] Agent Builder UI...
+✅ Agent Builder UI found
+[7/12] Workflow Builder UI...
+✅ Workflow UI found
+[8/12] Webhook/debug toggle endpoints...
+✅ Patched /api/ endpoint
+[Magic Loop] All checks passed!
+
+--- milestone_health.log ---
+==== Artemis CodexOps Magic Loop: ALL ASPECTS (Self-Healing) ====
+[1/12] Artemis agent...
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/home/success/artemis-codexops/agents/codexagent_nasa_artemis.py", line 28, in <module>
+    from agent_logger import log_status
+  File "/data/data/com.termux/files/home/success/artemis-codexops/agents/agent_logger.py", line 2
+    ndef agent_self_post(name, status="online", version="1.0", endpoint="http://localhost:8080/api/agent_post"):
+         ^^^^^^^^^^^^^^^
+SyntaxError: invalid syntax
+
+--- ENVIRONMENT ---
+TERMUX_IS_DEBUGGABLE_BUILD=0
+TERMUX_APP__BUILD_DATA_DIR=/data/data/com.termux
+TERMUX_MAIN_PACKAGE_FORMAT=debian
+TERMUX__HOME=/data/data/com.termux/files/home
+TERMUX_VERSION=0.118.2
+TERMUX_APP__SE_INFO=default:targetSdkVersion=28:complete
+TERMUX_API_VERSION=0.51.0
+TERMUX_APK_RELEASE=F_DROID
+DEX2OATBOOTCLASSPATH=/apex/com.android.art/javalib/core-oj.jar:/apex/com.android.art/javalib/core-libart.jar:/apex/com.android.art/javalib/okhttp.jar:/apex/com.android.art/javalib/bouncycastle.jar:/apex/com.android.art/javalib/apache-xml.jar:/system/framework/framework.jar:/system/framework/framework-graphics.jar:/system/framework/framework-location.jar:/system/framework/ext.jar:/system/framework/telephony-common.jar:/system/framework/voip-common.jar:/system/framework/ims-common.jar:/system/framework/knoxsdk.jar:/system/framework/com.samsung.android.uwb_extras.jar:/system/framework/framework-nfc.jar:/system/framework/tcmiface.jar:/system/framework/telephony-ext.jar:/system/framework/QPerformance.jar:/system/framework/UxPerformance.jar:/system/framework/esecomm.jar:/apex/com.android.i18n/javalib/core-icu4j.jar
+TERMUX__PREFIX=/data/data/com.termux/files/usr
+TERMUX_APP__SE_FILE_CONTEXT=u:object_r:app_data_file:s0:c154,c257,c512,c768
+TERMUX_APP__LEGACY_DATA_DIR=/data/data/com.termux
+TERMUX__ROOTFS=/data/data/com.termux/files
+BOOTCLASSPATH=/apex/com.android.art/javalib/core-oj.jar:/apex/com.android.art/javalib/core-libart.jar:/apex/com.android.art/javalib/okhttp.jar:/apex/com.android.art/javalib/bouncycastle.jar:/apex/com.android.art/javalib/apache-xml.jar:/system/framework/framework.jar:/system/framework/framework-graphics.jar:/system/framework/framework-location.jar:/system/framework/ext.jar:/system/framework/telephony-common.jar:/system/framework/voip-common.jar:/system/framework/ims-common.jar:/system/framework/knoxsdk.jar:/system/framework/com.samsung.android.uwb_extras.jar:/system/framework/framework-nfc.jar:/system/framework/tcmiface.jar:/system/framework/telephony-ext.jar:/system/framework/QPerformance.jar:/system/framework/UxPerformance.jar:/system/framework/esecomm.jar:/apex/com.android.i18n/javalib/core-icu4j.jar:/apex/com.android.adservices/javalib/framework-adservices.jar:/apex/com.android.adservices/javalib/framework-sdksandbox.jar:/apex/com.android.appsearch/javalib/framework-appsearch.jar:/apex/com.android.btservices/javalib/framework-bluetooth.jar:/apex/com.android.configinfrastructure/javalib/framework-configinfrastructure.jar:/apex/com.android.conscrypt/javalib/conscrypt.jar:/apex/com.android.devicelock/javalib/framework-devicelock.jar:/apex/com.android.healthfitness/javalib/framework-healthfitness.jar:/apex/com.android.ipsec/javalib/android.net.ipsec.ike.jar:/apex/com.android.media/javalib/updatable-media.jar:/apex/com.android.mediaprovider/javalib/framework-mediaprovider.jar:/apex/com.android.mediaprovider/javalib/framework-pdf.jar:/apex/com.android.mediaprovider/javalib/framework-pdf-v.jar:/apex/com.android.mediaprovider/javalib/framework-photopicker.jar:/apex/com.android.ondevicepersonalization/javalib/framework-ondevicepersonalization.jar:/apex/com.android.os.statsd/javalib/framework-statsd.jar:/apex/com.android.permission/javalib/framework-permission.jar:/apex/com.android.permission/javalib/framework-permission-s.jar:/apex/com.android.profiling/javalib/framework-profiling.jar:/apex/com.android.scheduling/javalib/framework-scheduling.jar:/apex/com.android.sdkext/javalib/framework-sdkextensions.jar:/apex/com.android.tethering/javalib/framework-connectivity.jar:/apex/com.android.tethering/javalib/framework-connectivity-t.jar:/apex/com.android.tethering/javalib/framework-tethering.jar:/apex/com.android.uwb/javalib/framework-uwb.jar:/apex/com.android.virt/javalib/framework-virtualization.jar:/apex/com.android.wifi/javalib/framework-wifi.jar:/apex/com.samsung.android.lifeguard/javalib/framework-lifeguard.jar:/apex/com.samsung.android.shell/javalib/framework-samsung-shell.jar
+TERMUX__SE_PROCESS_CONTEXT=u:r:untrusted_app_27:s0:c154,c257,c512,c768
+TERMUX_APP_PID=28388
+PATH=/data/data/com.termux/files/usr/bin
+TERMUX_APP__DATA_DIR=/data/user/0/com.termux
+
+--- AGENT REGISTRY (short) ---
+
+--- PLUGINS DIRECTORY ---
+No plugins dir.
+
+--- PYTHON VERSION ---
+Python 3.12.10
+
+--- PIP FREEZE ---
+openai==1.82.0
+openai-cli==1.0.1
+requests==2.32.3
+
+--- DEVICE INFO (Termux) ---
+Linux localhost 6.1.99-android14-11-30958380-abS928USQS4BYE4 #1 SMP PREEMPT Tue May 13 06:33:01 UTC 2025 aarch64 Android
+
+==== End of DX Diagnosis ====
+(Last 100 lines of health_check.log copied to clipboard, if available)
+[Sat May 31 14:00:04 CDT 2025] [A2A] Broadcasting agent heartbeat: 2ede182c05b910302c6b1376d78dc1329bfad10ec59aed61cb5cd1cb30b8b6c1
+[Sat May 31 14:00:05 CDT 2025] [AUTO-DEVOP] === AGENT CYCLE END ===
+[Sat May 31 14:01:52 CDT 2025] [AUTO-DEVOP] === AGENT CYCLE START ===
+[Sat May 31 14:01:53 CDT 2025] [CTX] Context hash: 5be6186349cdd9c988db0ce1b0526d57a127af2640c56a760d4cf41f271b2562
+[Sat May 31 14:01:53 CDT 2025] [META] ASCII/ANSI boot dashboard OK
+[Sat May 31 14:01:53 CDT 2025] [META] 80 columns OK
+[Sat May 31 14:01:53 CDT 2025] [META] animated VFX mesh splash OK
+[Sat May 31 14:01:53 CDT 2025] [META] license status/verification OK
+[Sat May 31 14:01:53 CDT 2025] [META] Mesh rollcall OK
+[Sat May 31 14:01:53 CDT 2025] [META] Tool scan OK
+[Sat May 31 14:01:53 CDT 2025] [META] AWS MCP login/auth OK
+[Sat May 31 14:01:53 CDT 2025] [META] Centralized logging OK
+[Sat May 31 14:01:53 CDT 2025] [META] Menu options OK
+[Sat May 31 14:01:53 CDT 2025] [META] Agent registry OK
+==== Artemis CodexOps Self-Diagnosis ====
+
+--- GIT STATUS ---
+On branch feature/full-auto-20250531-135939
+Your branch is up to date with 'origin/feature/full-auto-20250531-135939'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   auto-devop.log
+	modified:   auto-devop.sh
+	modified:   bulletproof.log
+	modified:   context.json
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+--- LAST COMMIT ---
+b96c5cf AUTO-DEVOP: Context loaded, meta-rules enforced, mesh agent [20250531-140004]
+
+--- MAGIC LOOP (Health Check) ---
+curl: (7) Failed to connect to localhost port 8080 after 1 ms: Could not connect to server
+==== Artemis CodexOps Magic Loop: ALL ASPECTS (Self-Healing) ====
+[1/12] Artemis agent...
+{
+  "status": "offline/mock",
+  "missions": [
+    {
+      "name": "Artemis I",
+      "status": "Launched"
+    },
+    {
+      "name": "Artemis II",
+      "status": "Scheduled"
+    }
+  ],
+  "error": "HTTPSConnectionPool(host='llapi.thespacedevs.com', port=443): Max retries exceeded with url: /2.2.0/launch/upcoming/?search=artemis (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1010)')))"
+}
+✅ Agent mission data
+[2/12] API endpoint...
+
+--- health_check.log ---
+    }
+  ],
+  "error": "HTTPSConnectionPool(host='llapi.thespacedevs.com', port=443): Max retries exceeded with url: /2.2.0/launch/upcoming/?search=artemis (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1010)')))"
+}
+✅ Agent mission data
+[2/12] API endpoint...
+✅ API OK
+[3/12] Dashboard UI...
+✅ Dashboard found
+[4/12] Voice agent...
+✅ Voice agent file exists
+[5/12] Vision agent...
+✅ Vision agent file exists
+[6/12] Agent Builder UI...
+✅ Agent Builder UI found
+[7/12] Workflow Builder UI...
+✅ Workflow UI found
+[8/12] Webhook/debug toggle endpoints...
+✅ Patched /api/ endpoint
+[Magic Loop] All checks passed!
+
+--- milestone_health.log ---
+==== Artemis CodexOps Magic Loop: ALL ASPECTS (Self-Healing) ====
+[1/12] Artemis agent...
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/home/success/artemis-codexops/agents/codexagent_nasa_artemis.py", line 28, in <module>
+    from agent_logger import log_status
+  File "/data/data/com.termux/files/home/success/artemis-codexops/agents/agent_logger.py", line 2
+    ndef agent_self_post(name, status="online", version="1.0", endpoint="http://localhost:8080/api/agent_post"):
+         ^^^^^^^^^^^^^^^
+SyntaxError: invalid syntax
+
+--- ENVIRONMENT ---
+TERMUX_IS_DEBUGGABLE_BUILD=0
+TERMUX_APP__BUILD_DATA_DIR=/data/data/com.termux
+TERMUX_MAIN_PACKAGE_FORMAT=debian
+TERMUX__HOME=/data/data/com.termux/files/home
+TERMUX_VERSION=0.118.2
+TERMUX_APP__SE_INFO=default:targetSdkVersion=28:complete
+TERMUX_API_VERSION=0.51.0
+TERMUX_APK_RELEASE=F_DROID
+DEX2OATBOOTCLASSPATH=/apex/com.android.art/javalib/core-oj.jar:/apex/com.android.art/javalib/core-libart.jar:/apex/com.android.art/javalib/okhttp.jar:/apex/com.android.art/javalib/bouncycastle.jar:/apex/com.android.art/javalib/apache-xml.jar:/system/framework/framework.jar:/system/framework/framework-graphics.jar:/system/framework/framework-location.jar:/system/framework/ext.jar:/system/framework/telephony-common.jar:/system/framework/voip-common.jar:/system/framework/ims-common.jar:/system/framework/knoxsdk.jar:/system/framework/com.samsung.android.uwb_extras.jar:/system/framework/framework-nfc.jar:/system/framework/tcmiface.jar:/system/framework/telephony-ext.jar:/system/framework/QPerformance.jar:/system/framework/UxPerformance.jar:/system/framework/esecomm.jar:/apex/com.android.i18n/javalib/core-icu4j.jar
+TERMUX__PREFIX=/data/data/com.termux/files/usr
+TERMUX_APP__SE_FILE_CONTEXT=u:object_r:app_data_file:s0:c154,c257,c512,c768
+TERMUX_APP__LEGACY_DATA_DIR=/data/data/com.termux
+TERMUX__ROOTFS=/data/data/com.termux/files
+BOOTCLASSPATH=/apex/com.android.art/javalib/core-oj.jar:/apex/com.android.art/javalib/core-libart.jar:/apex/com.android.art/javalib/okhttp.jar:/apex/com.android.art/javalib/bouncycastle.jar:/apex/com.android.art/javalib/apache-xml.jar:/system/framework/framework.jar:/system/framework/framework-graphics.jar:/system/framework/framework-location.jar:/system/framework/ext.jar:/system/framework/telephony-common.jar:/system/framework/voip-common.jar:/system/framework/ims-common.jar:/system/framework/knoxsdk.jar:/system/framework/com.samsung.android.uwb_extras.jar:/system/framework/framework-nfc.jar:/system/framework/tcmiface.jar:/system/framework/telephony-ext.jar:/system/framework/QPerformance.jar:/system/framework/UxPerformance.jar:/system/framework/esecomm.jar:/apex/com.android.i18n/javalib/core-icu4j.jar:/apex/com.android.adservices/javalib/framework-adservices.jar:/apex/com.android.adservices/javalib/framework-sdksandbox.jar:/apex/com.android.appsearch/javalib/framework-appsearch.jar:/apex/com.android.btservices/javalib/framework-bluetooth.jar:/apex/com.android.configinfrastructure/javalib/framework-configinfrastructure.jar:/apex/com.android.conscrypt/javalib/conscrypt.jar:/apex/com.android.devicelock/javalib/framework-devicelock.jar:/apex/com.android.healthfitness/javalib/framework-healthfitness.jar:/apex/com.android.ipsec/javalib/android.net.ipsec.ike.jar:/apex/com.android.media/javalib/updatable-media.jar:/apex/com.android.mediaprovider/javalib/framework-mediaprovider.jar:/apex/com.android.mediaprovider/javalib/framework-pdf.jar:/apex/com.android.mediaprovider/javalib/framework-pdf-v.jar:/apex/com.android.mediaprovider/javalib/framework-photopicker.jar:/apex/com.android.ondevicepersonalization/javalib/framework-ondevicepersonalization.jar:/apex/com.android.os.statsd/javalib/framework-statsd.jar:/apex/com.android.permission/javalib/framework-permission.jar:/apex/com.android.permission/javalib/framework-permission-s.jar:/apex/com.android.profiling/javalib/framework-profiling.jar:/apex/com.android.scheduling/javalib/framework-scheduling.jar:/apex/com.android.sdkext/javalib/framework-sdkextensions.jar:/apex/com.android.tethering/javalib/framework-connectivity.jar:/apex/com.android.tethering/javalib/framework-connectivity-t.jar:/apex/com.android.tethering/javalib/framework-tethering.jar:/apex/com.android.uwb/javalib/framework-uwb.jar:/apex/com.android.virt/javalib/framework-virtualization.jar:/apex/com.android.wifi/javalib/framework-wifi.jar:/apex/com.samsung.android.lifeguard/javalib/framework-lifeguard.jar:/apex/com.samsung.android.shell/javalib/framework-samsung-shell.jar
+TERMUX__SE_PROCESS_CONTEXT=u:r:untrusted_app_27:s0:c154,c257,c512,c768
+TERMUX_APP_PID=28388
+PATH=/data/data/com.termux/files/usr/bin
+TERMUX_APP__DATA_DIR=/data/user/0/com.termux
+
+--- AGENT REGISTRY (short) ---
+
+--- PLUGINS DIRECTORY ---
+No plugins dir.
+
+--- PYTHON VERSION ---
+Python 3.12.10
+
+--- PIP FREEZE ---
+openai==1.82.0
+openai-cli==1.0.1
+requests==2.32.3
+
+--- DEVICE INFO (Termux) ---
+Linux localhost 6.1.99-android14-11-30958380-abS928USQS4BYE4 #1 SMP PREEMPT Tue May 13 06:33:01 UTC 2025 aarch64 Android
+
+==== End of DX Diagnosis ====
+(Last 100 lines of health_check.log copied to clipboard, if available)
+[Sat May 31 14:01:57 CDT 2025] [A2A] Broadcasting agent heartbeat: 5be6186349cdd9c988db0ce1b0526d57a127af2640c56a760d4cf41f271b2562
