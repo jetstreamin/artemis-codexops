@@ -45,3 +45,13 @@ run.log
 *.log
 *.log
 *.log
+auto-devop.log
+bulletproof.log
+clipboard_ingest.log
+demo_health.log
+health_check.log
+local_run.log
+magic_loop_final.log
+run.pid
+*.cache
+nohup.out
