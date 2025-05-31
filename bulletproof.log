@@ -214,3 +214,10 @@ branch 'feature/full-auto-20250531-135506' set up to track 'origin/feature/full-
 https://github.com/jetstreamin/artemis-codexops/pull/15
 Sat May 31 13:56:32 CDT 2025
 cp: cannot stat 'auto-develop.sh': No such file or directory
+error: Your local changes to the following files would be overwritten by checkout:
+	auto-devop.log
+Please commit your changes or stash them before you switch branches.
+Aborting
+fatal: a branch named 'develop' already exists
+Already up to date.
+Switched to a new branch 'feature/full-auto-20250531-135803'
