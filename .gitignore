@@ -155,3 +155,6 @@ milestone_weekly.txt
 *.log
 *.pid
 *.cache
+*.log
+*.pid
+*.cache
