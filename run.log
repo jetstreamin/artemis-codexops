@@ -1,0 +1,15 @@
+[feature/full-auto-20250531-140313 30de791] AUTO-DEVOP: Full cycle [20250531-142314]
+ 6 files changed, 297 insertions(+), 1 deletion(-)
+ create mode 100755 auto-devop.sh
+ create mode 100644 run.log
+ create mode 100644 run.pid
+To https://github.com/jetstreamin/artemis-codexops
+   4cea5d8..30de791  feature/full-auto-20250531-140313 -> feature/full-auto-20250531-140313
+error: Your local changes to the following files would be overwritten by checkout:
+	run.log
+Please commit your changes or stash them before you switch branches.
+Aborting
+fatal: a branch named 'main' already exists
+Already up to date.
+Already up to date.
+Everything up-to-date
