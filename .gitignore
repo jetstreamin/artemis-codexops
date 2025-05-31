@@ -55,3 +55,5 @@ magic_loop_final.log
 run.pid
 *.cache
 nohup.out
+*.log
+*.log
