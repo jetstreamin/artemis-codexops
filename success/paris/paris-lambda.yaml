@@ -1,0 +1,69 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Parameters:
+  DeployBucket:
+    Type: String
+  DeployKey:
+    Type: String
+  ExistingLambdaRoleArn:
+    Type: String
+
+Resources:
+  ParisLambdaFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: paris-agent-lambda-final
+      Handler: lambda_handler.handler
+      Runtime: python3.12
+      Role: !Ref ExistingLambdaRoleArn
+      Code:
+        S3Bucket: !Ref DeployBucket
+        S3Key: !Ref DeployKey
+      Timeout: 15
+      MemorySize: 256
+
+  ParisAPI:
+    Type: AWS::ApiGateway::RestApi
+    Properties:
+      Name: ParisAPI-final
+
+  ParisAPIResource:
+    Type: AWS::ApiGateway::Resource
+    Properties:
+      RestApiId: !Ref ParisAPI
+      ParentId: !GetAtt ParisAPI.RootResourceId
+      PathPart: run
+
+  ParisAPIMethod:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      AuthorizationType: NONE
+      HttpMethod: POST
+      ResourceId: !Ref ParisAPIResource
+      RestApiId: !Ref ParisAPI
+      Integration:
+        Type: AWS_PROXY
+        IntegrationHttpMethod: POST
+        Uri: !Sub >-
+          arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${ParisLambdaFunction.Arn}/invocations
+
+  ParisAPIPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName: !Ref ParisLambdaFunction
+      Principal: apigateway.amazonaws.com
+      SourceArn: !Sub >-
+        arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${ParisAPI}/*/*/run
+
+  ParisAPIDeployment:
+    Type: AWS::ApiGateway::Deployment
+    DependsOn: ParisAPIMethod
+    Properties:
+      RestApiId: !Ref ParisAPI
+      StageName: prod
+
+Outputs:
+  Endpoint:
+    Description: "Invoke URL for Paris"
+    Value: !Sub "https://${ParisAPI}.execute-api.${AWS::Region}.amazonaws.com/prod/run"

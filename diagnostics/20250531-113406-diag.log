@@ -1,0 +1,52 @@
+================================================================================
+================================================================================
+================================================================================
+
+
+================================================================================
+Checking persistent paths...
+[OK]  /data/data/com.termux/files/home/jetstreamin exists
+[ERR]  Lock file missing
+[ERR]  requirements.txt missing
+
+Checking API/env keys...
+[ERR]  OPENAI_API_KEY missing
+[WARN]  GITHUB_TOKEN missing
+
+Checking agent repo sync...
+[ERR]  Git repo not present in /data/data/com.termux/files/home/jetstreamin
+
+Checking system packages...
+[OK]  git
+[OK]  curl
+[OK]  termux-api
+[ERR]  python3 not found
+[OK]  jq
+[OK]  ffmpeg
+[OK]  sox
+[OK]  openssl
+
+Checking required Python modules...
+[ERR]  Python: requests
+[OK]  Python module: openai
+[OK]  Python module: termcolor
+
+Checking required binaries...
+[OK]  git in PATH
+[OK]  curl in PATH
+[OK]  jq in PATH
+[OK]  ffmpeg in PATH
+[OK]  sox in PATH
+[OK]  python3 in PATH
+[OK]  openssl in PATH
+
+Checking permissions...
+[OK]  Write access to /data/data/com.termux/files/home/jetstreamin
+
+Auto-fixing missing packages: python3
+
+Auto-fixing missing Python modules: requests
+
+================================================================================
+================================================================================
+See /data/data/com.termux/files/home/jetstreamin/diagnostics/20250531-113406-diag.log for full details.

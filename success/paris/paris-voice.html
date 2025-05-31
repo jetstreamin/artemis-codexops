@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Paris Voice Chat</title>
+  <style>
+    body { font-family: sans-serif; background: #171b22; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
+    #chat { width: 100%; max-width: 500px; margin-bottom: 24px; }
+    .bubble { background: #222c3a; border-radius: 10px; padding: 12px; margin: 8px 0; }
+    .bubble.user { background: #2980b9; align-self: flex-end; }
+    .bubble.paris { background: #272a2e; align-self: flex-start; }
+    #voice-btn { font-size: 20px; padding: 16px 24px; border-radius: 30px; border: none; background: #3fc380; color: #171b22; margin: 12px 0; cursor: pointer; transition: background .2s; }
+    #voice-btn.listening { background: #e74c3c; color: #fff; }
+    #status { margin: 12px 0 0 0; font-size: 14px; color: #bbb; }
+  </style>
+</head>
+<body>
+  <div id="chat"></div>
+  <button id="voice-btn">🎤 Hold to Talk</button>
+  <div id="status"></div>
+  <script>
+    const ENDPOINT = "https://7rhna2qsnvubasvarjchbqkkkq0dyiqn.lambda-url.us-east-1.on.aws/";
+    const chat = document.getElementById('chat');
+    const voiceBtn = document.getElementById('voice-btn');
+    const status = document.getElementById('status');
+    let recognizing = false;
+    let recognition;
+    let synth = window.speechSynthesis;
+
+    // Voice recognition setup
+    if ('webkitSpeechRecognition' in window) {
+      recognition = new webkitSpeechRecognition();
+      recognition.continuous = false;
+      recognition.interimResults = false;
+      recognition.lang = 'en-US';
+      recognition.onstart = () => { status.textContent = "Listening..."; };
+      recognition.onerror = e => { status.textContent = "Mic error."; };
+      recognition.onend = () => {
+        recognizing = false;
+        voiceBtn.classList.remove('listening');
+        status.textContent = "";
+      };
+      recognition.onresult = evt => {
+        const transcript = evt.results[0][0].transcript.trim();
+        addBubble(transcript, 'user');
+        sendPrompt(transcript);
+      };
+    } else {
+      voiceBtn.disabled = true;
+      status.textContent = "Speech recognition not supported.";
+    }
+
+    // Push-to-talk
+    voiceBtn.onmousedown = voiceBtn.ontouchstart = () => {
+      if (recognizing || !recognition) return;
+      recognizing = true;
+      voiceBtn.classList.add('listening');
+      recognition.start();
+    };
+    voiceBtn.onmouseup = voiceBtn.onmouseleave = voiceBtn.ontouchend = () => {
+      if (recognizing && recognition) recognition.stop();
+    };
+
+    // Add chat bubble
+    function addBubble(text, who) {
+      const div = document.createElement('div');
+      div.className = `bubble ${who}`;
+      div.textContent = text;
+      chat.appendChild(div);
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    // Send prompt to Lambda
+    async function sendPrompt(prompt) {
+      status.textContent = "Paris is thinking...";
+      try {
+        const res = await fetch(ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt })
+        });
+        const data = await res.json();
+        const reply = (data.response || data.Message || JSON.stringify(data));
+        addBubble(reply, 'paris');
+        speak(reply);
+      } catch (e) {
+        addBubble("Failed to reach Paris.", 'paris');
+      }
+      status.textContent = "";
+    }
+
+    // Speak Paris's reply
+    function speak(txt) {
+      if (!window.speechSynthesis) return;
+      synth.cancel();
+      const utter = new SpeechSynthesisUtterance(txt);
+      utter.rate = 1.07;
+      synth.speak(utter);
+    }
+  </script>
+</body>
+</html>
